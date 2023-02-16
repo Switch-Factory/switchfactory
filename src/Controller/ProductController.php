@@ -22,6 +22,7 @@ class ProductController extends AbstractController
     {
         $this->repo = $repo;
     }
+    
     /**
      * @Route("/", name="product_show")
      */
@@ -93,7 +94,7 @@ class ProductController extends AbstractController
                 $newFilename = $this->uploadImage($imgFile, $slugger);
                 $p->setImage($newFilename);
             }
-            $this->repo->save($p, true);
+            $this->repo->add($p, true);
             return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("product/form.html.twig", [

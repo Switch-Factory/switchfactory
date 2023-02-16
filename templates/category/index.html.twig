@@ -1,11 +1,11 @@
 {% extends 'admin.html.twig' %}
-{% block title %}Product Manager
+{% block title %}Category Manager
 {% endblock %}
 
 {% block body %}
 	<div classname="page-heading pb-2 mt-4 mb-2 ">
 		<h3>Manager</h3>
-		<a href="{{path('product_create')}}">
+		<a href="{{path('category_create')}}">
 			<button type="button" class="btn btn-outline-primary">Insert</button>
 		</a>
 	</div>
@@ -19,28 +19,13 @@
 							<tr>
 								<th>ID</th>
 								<th>Name</th>
-								<th>Category</th>
-								<th>Price</th>
-								<th>Created</th>
-								<th>Supplier</th>
-								<th>Quantity</th>
-								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody class="table-border-bottom-0">
-							{% for p in products %}
+							{% for c in category %}
 								<tr>
-									<td>{{ p.id}}</td>
-									<td>{{ p.name}}</td>
-									<td>{{ p.category}}</td>
-									<td>{{ p.price}} .VND</td>
-									<td>{{ p.created|date("m/d/Y")}}</td>
-									<td>{{ p.supplier}}</td>
-									<td>{{ p.quantity}}</td>
-									<td>
-										<a href="{{path('product_edit',{'id':p.id})}}">Edit</a>
-										<a href="{{path('product_delete',{'id':p.id})}}">Delete</a>
-									</td>
+									<td>{{ c.id}}</td>
+									<td>{{ c.name}}</td>
 								</tr>
 							{% endfor %}
 
