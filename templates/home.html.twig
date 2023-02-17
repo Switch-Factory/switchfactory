@@ -1,428 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>{% block title %}Switch Factory{% endblock %}</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-    <!-- MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="{{asset("styles/style.css")}}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="../public/uploads/logo.jpg">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+		<title>
+			{% block title %}Switch Factory
+			{% endblock %}
+		</title>
+		<!-- Font Awesome -->
+		<link
+		rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
+		<!-- Google Fonts Roboto -->
+		<link
+		rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+		<!-- MDB -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="{{asset("styles/style.css")}}"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="icon" type="image/x-icon" href="../public/uploads/logo.jpg">
 
-</head>
-<body>
-    <!-- Navbar -->
-<header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<header class="p-3 bg-dark text-white">
+			<div class="container">
+				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+						<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+							<use xlink:href="#bootstrap"></use>
+						</svg>
+					</a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a class="nav-link" href="{{path('product_show')}}">Product</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Category</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-        </ul>
+					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+						<li>
+							<a href="" class="nav-link px-2 text-secondary">Home</a>
+						</li>
+						<li>
+							<a class="nav-link" href="{{path('product_show')}}">Product</a>
+						</li>
+						<li>
+							<a href="#" class="nav-link px-2 text-white">Category</a>
+						</li>
+						<li>
+							<a href="#" class="nav-link px-2 text-white">FAQs</a>
+						</li>
+						<li>
+							<a href="#" class="nav-link px-2 text-white">About</a>
+						</li>
+					</ul>
 
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
-      </div>
-    </div>  
-  </header>
-<!-- Navbar -->
-   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <div style="height: 60px"></div>
-
-{% block body %}
- <!--Main layout-->
-<main>
-<div class="container">
-  <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #607D8B">
-  <!-- Container wrapper -->
-  <div class="container-fluid">
-
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Categories:</a>
-
-    <!-- Toggle button -->
-    <button 
-       class="navbar-toggler" 
-       type="button" 
-       data-bs-toggle="collapse" 
-       data-bs-target="#navbarSupportedContent2">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-        <!-- Link -->
-        <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">All</a>
-        </li>
-
-      </ul>
-
-      <!-- Search -->
-      <form class="w-auto py-1" style="max-width: 12rem">
-        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
-      </form>
-
-    </div>
-  </div>
-  <!-- Container wrapper -->
-</nav>
-<!-- Navbar -->
-  
-<!-- Products -->
-  <section>
-  <div class="text-center">
-    <div class="row">
-      {% for p in products %}
-        <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
-          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-            data-mdb-ripple-color="light">
-            {% set img = p.image %}
-            <img src="{{asset('uploads/'~img)}}"
-              class="w-100" />
-          </div>
-          <div class="card-body">
-            <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
-              <h5 class="card-title mb-2">{{p.name}}</h5>
-            </a>
-            <h6 class="mb-3 price">{{p.price}} VND</h6>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-   
-  </div>
-</section>
-</div>
-</main>
- <!--Main layout-->
+					<div class="text-end">
+						<button type="button" class="btn btn-outline-light me-2">Login</button>
+						<button type="button" class="btn btn-warning">Sign-up</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Navbar -->
+		<link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-{% endblock %}
+		{% block body %}
+			<!--Main layout-->
+			<main>
+				<div
+					class="container">
+					<!-- Navbar -->
+					<nav
+						class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #607D8B">
+						<!-- Container wrapper -->
+						<div
+							class="container-fluid">
+							<!-- Navbar brand -->
+							<a class="navbar-brand" href="#"><b>Categories:</b></a>
 
-<footer class="text-center text-white mt-4" style="background-color: #607D8B">
-<style>
-  *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
-}
-body{
-  min-height: 100vh;
-  width: 100%;
-  background: #EEECEB;
-}
-footer{
-  position: relative;
-  background: #000;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-}
-footer::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 100px;
-  height: 1px;
-  width: 100%;
-  background: #AFAFB6;
-}
-footer .content{
-  max-width: 1850px;
-  margin: auto;
-  padding: 30px 40px 40px 40px;
-}
-footer .content .top{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-.content .top .logo-details{
-  color: #fff;
-  font-size: 30px;
-}
-.content .top .media-icons{
-  display: flex;
-}
-.content .top .media-icons a{
-  height: 40px;
-  width: 40px;
-  margin: 0 8px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 40px;
-  color: #fff;
-  font-size: 17px;
-  text-decoration: none;
-  transition: all 0.4s ease;
-}
-.top .media-icons a:nth-child(1){
-  background: #4267B2;
-}
-.top .media-icons a:nth-child(1):hover{
-  color: #4267B2;
-  background: #fff;
-}
-.top .media-icons a:nth-child(2){
-  background: #1DA1F2;
-}
-.top .media-icons a:nth-child(2):hover{
-  color: #1DA1F2;
-  background: #fff;
-}
-.top .media-icons a:nth-child(3){
-  background: #E1306C;
-}
-.top .media-icons a:nth-child(3):hover{
-  color: #E1306C;
-  background: #fff;
-}
-.top .media-icons a:nth-child(4){
-  background: #0077B5;
-}
-.top .media-icons a:nth-child(4):hover{
-  color: #0077B5;
-  background: #fff;
-}
-.top .media-icons a:nth-child(5){
-  background: #FF0000;
-}
-.top .media-icons a:nth-child(5):hover{
-  color: #FF0000;
-  background: #fff;
-}
-footer .content .link-boxes{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-footer .content .link-boxes .box{
-  width: calc(100% / 5 - 10px);
-}
-.content .link-boxes .box .link_name{
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  position: relative;
-}
-.link-boxes .box .link_name::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 2px;
-  width: 35px;
-  background: #fff;
-}
-.content .link-boxes .box li{
-  margin: 6px 0;
-  list-style: none;
-}
-.content .link-boxes .box li a{
-  color: #fff;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: all 0.4s ease
-}
-.content .link-boxes .box li a:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-.content .link-boxes .input-box{
-  margin-right: 55px;
-}
-.link-boxes .input-box input{
-  height: 40px;
-  width: calc(100% + 55px);
-  outline: none;
-  border: 2px solid #AFAFB6;
-  background: #707070;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  color: #fff;
-  margin-top: 5px;
-}
-.link-boxes .input-box input::placeholder{
-  color: #AFAFB6;
-  font-size: 16px;
-}
-.link-boxes .input-box input[type="button"]{
-  background: #fff;
-  color: #140B5C;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 4px 0;
-  opacity: 0.8;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-.input-box input[type="button"]:hover{
-  opacity: 1;
-}
-footer .bottom-details{
-  width: 100%;
-  background: #000;
-}
-footer .bottom-details .bottom_text{
-  max-width: 1250px;
-  margin: auto;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-}
-.bottom-details .bottom_text span,
-.bottom-details .bottom_text a{
-  font-size: 14px;
-  font-weight: 300;
-  color: #fff;
-  opacity: 0.8;
-  text-decoration: none;
-}
-.bottom-details .bottom_text a:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-.bottom-details .bottom_text a{
-  margin-right: 10px;
-}
-@media (max-width: 900px) {
-  footer .content .link-boxes{
-    flex-wrap: wrap;
-  }
-  footer .content .link-boxes .input-box{
-    width: 40%;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 700px){
-  footer{
-    position: relative;
-  }
-  .content .top .logo-details{
-    font-size: 26px;
-  }
-  .content .top .media-icons a{
-    height: 35px;
-    width: 35px;
-    font-size: 14px;
-    line-height: 35px;
-  }
-  footer .content .link-boxes .box{
-    width: calc(100% / 3 - 10px);
-  }
-  footer .content .link-boxes .input-box{
-    width: 60%;
-  }
-  .bottom-details .bottom_text span,
-  .bottom-details .bottom_text a{
-    font-size: 12px;
-  }
-}
-@media (max-width: 520px){
-  footer::before{
-    top: 145px;
-  }
-  footer .content .top{
-    flex-direction: column;
-  }
-  .content .top .media-icons{
-    margin-top: 16px;
-  }
-  footer .content .link-boxes .box{
-    width: calc(100% / 2 - 10px);
-  }
-  footer .content .link-boxes .input-box{
-    width: 100%;
-  }
-}
-</style>
-  <div class="content">
-        <div class="top">
-          <div class="logo-details">
-            <img style="max-width: 100px" src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.15752-9/331107408_715676833533541_3885101367435613190_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_ohc=iXBtuEUxpSQAX9A9XUr&tn=nrSirqe_iHDbg5jH&_nc_ht=scontent.fsgn2-7.fna&oh=03_AdRncWP0Yc84PpNXKkqh9KmupRR_nVwi9LSsZTmeivwadQ&oe=6412BBFB"></img>
-            <span class="logo_name">SWITCH FACTORY</span>
-          </div>
-          <div class="media-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitch"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div class="link-boxes">
-          <ul class="box">
-            <li>Company</li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Get started</a></li>
-          </ul>
-          <ul class="box">
-            <li>Account</li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">My account</a></li>
-            <li><a href="#">Prefrences</a></li>
-            <li><a href="#">Purchase</a></li>
-          </ul>
-          <ul class="box">
-            <li>Courses</li>
-            <li><a href="#">HTML & CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">Photography</a></li>
-            <li><a href="#">Photoshop</a></li>
-          </ul>
-          <ul class="box input-box">
-            <li>Subscribe</li>
-            <li><input type="text" placeholder="Enter your email"></li>
-            <li><input type="button" value="Subscribe"></li>
-          </ul>
-        </div>
-      </div>
-      <div class="bottom-details">
-        <div class="bottom_text">
-          <span class="copyright_text">© 2023 Shopee. All Right Reserved<a href="#"></a>Greenwich University Can Tho</span>
-          <span class="policy_terms">
-            <a href="#">Privacy policy</a>
-            <a href="#">Terms & condition</a>
-          </span>
-        </div>
-      </div>
-</footer>
-</body>
-</html>
+							<!-- Toggle button -->
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2">
+								<i class="fas fa-bars"></i>
+							</button>
 
+							<!-- Collapsible wrapper -->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent2">
+								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+									{% for cat in category %}
+										<li class="nav-item acitve">
+											<a class="nav-link text-white" href="#"><b>{{cat.name}}</b></a>
+										</li>
+									{% endfor %}
+								</ul>
+								<!-- Search -->
+								<form class="w-auto py-1" style="max-width: 12rem">
+									<input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
+								</form>
+
+							</div>
+						</div>
+						<!-- Container wrapper -->
+					</nav>
+					<!-- Navbar -->
+
+					<!-- Products -->
+					<section>
+						<div class="text-center">
+							<div class="row">
+								{% for p in products %}
+									<div class="col-lg-3 col-md-6 mb-4">
+										<div class="card">
+											<div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+												{% set img = p.image %}
+												<img src="{{asset('uploads/'~img)}}" class="w-100"/>
+											</div>
+											<div class="card-body">
+												<a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
+													<h5 class="card-title mb-2">{{p.name}}</h5>
+												</a>
+												<h6 class="mb-3 price">{{p.price}}
+													VND</h6>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+
+
+						</div>
+					</section>
+				</div>
+			</main>
+			<!--Main layout-->
+
+
+		{% endblock %}
+
+		<footer class="text-center text-white mt-4" style="background-color: #607D8B">
+			<style>
+				* {
+					margin: 0;
+					padding: 0;
+					box-sizing: border-box;
+					font-family: "Poppins", sans-serif;
+				}
+				body {
+					min-height: 100vh;
+					width: 100%;
+					background: #EEECEB;
+				}
+				footer {
+					position: relative;
+					background: #000;
+					width: 100%;
+					bottom: 0;
+					left: 0;
+				}
+				footer::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 100px;
+					height: 1px;
+					width: 100%;
+					background: #AFAFB6;
+				}
+				footer .content {
+					max-width: 1850px;
+					margin: auto;
+					padding: 30px 40px 40px;
+				}
+				footer .content .top {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					margin-bottom: 50px;
+				}
+				.content .top .logo-details {
+					color: #fff;
+					font-size: 30px;
+				}
+				.content .top .media-icons {
+					display: flex;
+				}
+				.content .top .media-icons a {
+					height: 40px;
+					width: 40px;
+					margin: 0 8px;
+					border-radius: 50%;
+					text-align: center;
+					line-height: 40px;
+					color: #fff;
+					font-size: 17px;
+					text-decoration: none;
+					transition: all 0.4s ease;
+				}
+				.top .media-icons a:nth-child(1) {
+					background: #4267B2;
+				}
+				.top .media-icons a:nth-child(1):hover {
+					color: #4267B2;
+					background: #fff;
+				}
+				.top .media-icons a:nth-child(2) {
+					background: #1DA1F2;
+				}
+				.top .media-icons a:nth-child(2):hover {
+					color: #1DA1F2;
+					background: #fff;
+				}
+				.top .media-icons a:nth-child(3) {
+					background: #E1306C;
+				}
+				.top .media-icons a:nth-child(3):hover {
+					color: #E1306C;
+					background: #fff;
+				}
+				.top .media-icons a:nth-child(4) {
+					background: #0077B5;
+				}
+				.top .media-icons a:nth-child(4):hover {
+					color: #0077B5;
+					background: #fff;
+				}
+				.top .media-icons a:nth-child(5) {
+					background: #FF0000;
+				}
+				.top .media-icons a:nth-child(5):hover {
+					color: #FF0000;
+					background: #fff;
+				}
+				footer .content .link-boxes {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+				}
+				footer .content .link-boxes .box {
+					width: calc(100% / 5 - 10px);
+				}
+				.content .link-boxes .box .link_name {
+					color: #fff;
+					font-size: 18px;
+					font-weight: 400;
+					margin-bottom: 10px;
+					position: relative;
+				}
+				.link-boxes .box .link_name::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					bottom: -2px;
+					height: 2px;
+					width: 35px;
+					background: #fff;
+				}
+				.content .link-boxes .box li {
+					margin: 6px 0;
+					list-style: none;
+				}
+				.content .link-boxes .box li a {
+					color: #fff;
+					font-size: 14px;
+					font-weight: 400;
+					text-decoration: none;
+					opacity: 0.8;
+					transition: all 0.4s ease
+				}
+				.content .link-boxes .box li a:hover {
+					opacity: 1;
+					text-decoration: underline;
+				}
+				.content .link-boxes .input-box {
+					margin-right: 55px;
+				}
+				.link-boxes .input-box input {
+					height: 40px;
+					width: calc(100% + 55px);
+					outline: none;
+					border: 2px solid #AFAFB6;
+					background: #707070;
+					border-radius: 4px;
+					padding: 0 15px;
+					font-size: 15px;
+					color: #fff;
+					margin-top: 5px;
+				}
+				.link-boxes .input-box input::placeholder {
+					color: #AFAFB6;
+					font-size: 16px;
+				}
+				.link-boxes .input-box input[type="button"] {
+					background: #fff;
+					color: #140B5C;
+					border: none;
+					font-size: 18px;
+					font-weight: 500;
+					margin: 4px 0;
+					opacity: 0.8;
+					cursor: pointer;
+					transition: all 0.4s ease;
+				}
+				.input-box input[type="button"]:hover {
+					opacity: 1;
+				}
+				footer .bottom-details {
+					width: 100%;
+					background: #000;
+				}
+				footer .bottom-details .bottom_text {
+					max-width: 1250px;
+					margin: auto;
+					padding: 20px 40px;
+					display: flex;
+					justify-content: space-between;
+				}
+				.bottom-details .bottom_text span,
+				.bottom-details .bottom_text a {
+					font-size: 14px;
+					font-weight: 300;
+					color: #fff;
+					opacity: 0.8;
+					text-decoration: none;
+				}
+				.bottom-details .bottom_text a:hover {
+					opacity: 1;
+					text-decoration: underline;
+				}
+				.bottom-details .bottom_text a {
+					margin-right: 10px;
+				}
+				@media(max-width: 900px) {
+					footer .content .link-boxes {
+						flex-wrap: wrap;
+					}
+					footer .content .link-boxes .input-box {
+						width: 40%;
+						margin-top: 10px;
+					}
+				}
+				@media(max-width: 700px) {
+					footer {
+						position: relative;
+					}
+					.content .top .logo-details {
+						font-size: 26px;
+					}
+					.content .top .media-icons a {
+						height: 35px;
+						width: 35px;
+						font-size: 14px;
+						line-height: 35px;
+					}
+					footer .content .link-boxes .box {
+						width: calc(100% / 3 - 10px);
+					}
+					footer .content .link-boxes .input-box {
+						width: 60%;
+					}
+					.bottom-details .bottom_text span,
+					.bottom-details .bottom_text a {
+						font-size: 12px;
+					}
+				}
+				@media(max-width: 520px) {
+					footer::before {
+						top: 145px;
+					}
+					footer .content .top {
+						flex-direction: column;
+					}
+					.content .top .media-icons {
+						margin-top: 16px;
+					}
+					footer .content .link-boxes .box {
+						width: calc(100% / 2 - 10px);
+					}
+					footer .content .link-boxes .input-box {
+						width: 100%;
+					}
+				}
+			</style>
+			<div class="content">
+				<div class="top">
+					<div class="logo-details">
+						<img style="max-width: 100px" src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.15752-9/331107408_715676833533541_3885101367435613190_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_ohc=iXBtuEUxpSQAX9A9XUr&tn=nrSirqe_iHDbg5jH&_nc_ht=scontent.fsgn2-7.fna&oh=03_AdRncWP0Yc84PpNXKkqh9KmupRR_nVwi9LSsZTmeivwadQ&oe=6412BBFB"></img>
+					<span class="logo_name">SWITCH FACTORY</span>
+				</div>
+				<div class="media-icons">
+					<a href="#">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-instagram"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-twitch"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-youtube"></i>
+					</a>
+				</div>
+			</div>
+			<div class="link-boxes">
+				<ul class="box">
+					<li>Company</li>
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="#">Contact us</a>
+					</li>
+					<li>
+						<a href="#">About us</a>
+					</li>
+					<li>
+						<a href="#">Get started</a>
+					</li>
+				</ul>
+				<ul class="box">
+					<li>Account</li>
+					<li>
+						<a href="#">Profile</a>
+					</li>
+					<li>
+						<a href="#">My account</a>
+					</li>
+					<li>
+						<a href="#">Prefrences</a>
+					</li>
+					<li>
+						<a href="#">Purchase</a>
+					</li>
+				</ul>
+				<ul class="box">
+					<li>Courses</li>
+					<li>
+						<a href="#">HTML & CSS</a>
+					</li>
+					<li>
+						<a href="#">JavaScript</a>
+					</li>
+					<li>
+						<a href="#">Photography</a>
+					</li>
+					<li>
+						<a href="#">Photoshop</a>
+					</li>
+				</ul>
+				<ul class="box input-box">
+					<li>Subscribe</li>
+					<li><input type="text" placeholder="Enter your email"></li>
+					<li><input type="button" value="Subscribe"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="bottom-details">
+			<div class="bottom_text">
+				<span class="copyright_text">© 2023 Shopee. All Right Reserved<a href="#"></a>Greenwich University Can Tho</span>
+				<span class="policy_terms">
+					<a href="#">Privacy policy</a>
+					<a href="#">Terms & condition</a>
+				</span>
+			</div>
+		</div>
+	</body>
+</html></body></html></footer></body></html>

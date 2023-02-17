@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,13 +18,15 @@ class MainController extends AbstractController
     /**
      * @Route("/index", name="index")
      */
-    public function indexPageAction(): Response
+    public function indexPageAction(CategoryRepository $catrepo): Response
     {
         $products = $this->repo->findAll();
+        $cat = $catrepo->findAll();
         return $this->render('home.html.twig', [
-            'products' => $products
+            'products' => $products, 'category' => $cat
         ]);
     }
+
     /**
      * @Route("/admin", name="adminPage")
      */
@@ -41,16 +44,6 @@ class MainController extends AbstractController
     //     $prod = $repo->findProdByName($name);
     //     return $this->json($prod);
     // }
-
-    /**
-     * @Route("/homepage", name="homepage")
-     */
-    public function homepageAction(): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController'
-        ]);
-    }
 
     // /**
     //  * @Route("login", name="login")
@@ -78,6 +71,27 @@ class MainController extends AbstractController
     public function cartAction(): Response
     {
         return $this->render('cart.html.twig', [
+            'controller_name' => 'MainController'
+        ]);
+    }
+
+    // /**
+    //  * @Route("/cat", name="show_cat")
+    //  */
+    // public function showProductCat(CategoryRepository $repo2): Response
+    // {
+    //     $cat = $repo2->findAll();
+    //     return $this->render('product/index.html.twig', [
+    //         'category' => $cat
+    //     ]);
+    // }   
+
+        /**
+     * @Route("/homepage", name="homepage")
+     */
+    public function homepageAction(): Response
+    {
+        return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController'
         ]);
     }
