@@ -22,7 +22,7 @@ class MainController extends AbstractController
     {
         $products = $this->repo->findAll();
         $cat = $catrepo->findAll();
-        return $this->render('home.html.twig', [
+        return $this->render('main/home.html.twig', [
             'products' => $products, 'category' => $cat
         ]);
     }
@@ -36,6 +36,15 @@ class MainController extends AbstractController
         return $this->render('admin.html.twig', []);
     }
 
+       /**
+     * @Route("/homepage", name="homepage")
+     */
+    public function homepageAction(): Response
+    {
+        return $this->render('main/home.html.twig', [
+            'controller_name' => 'MainController'
+        ]);
+    }
     //  /**
     //  * @Route("/{name}", name="findProdByName")
     //  */
@@ -86,13 +95,5 @@ class MainController extends AbstractController
     //     ]);
     // }   
 
-        /**
-     * @Route("/homepage", name="homepage")
-     */
-    public function homepageAction(): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController'
-        ]);
-    }
+     
 }

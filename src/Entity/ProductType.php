@@ -27,6 +27,7 @@ class  ProductType extends AbstractType
                 'mapped' => false
             ])
             ->add('supplier')
+            
             ->add('image', HiddenType::class, [
                 'required' => false
             ])
