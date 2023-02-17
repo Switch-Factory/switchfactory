@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\ProductType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -49,10 +50,12 @@ class ProductController extends AbstractController
     /**
      * @Route("/add", name="product_create")
      */
-    public function createAction(Request $req, SluggerInterface $slugger): Response
+    public function createAction(Request $req, SluggerInterface $slugger, CategoryRepository $catrepo): Response
     {
         $p = new Product();
         $form = $this->createForm(ProductType::class, $p);
+        $cat = $catrepo->findAll();
+        
 
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -68,7 +71,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("product/form.html.twig", [
-            'form' => $form->createView()
+            'form' => $form->createView(), 'category' => $cat
         ]);
     }
 
