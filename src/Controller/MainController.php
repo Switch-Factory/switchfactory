@@ -114,15 +114,15 @@ class MainController extends AbstractController
     //     ]);
     // }
 
-    // /**
-    //  * @Route("cart", name="cart")
-    //  */
-    // public function cartAction(): Response
-    // {
-    //     return $this->render('cart.html.twig', [
-    //         'controller_name' => 'MainController'
-    //     ]);
-    // }
+    /**
+     * @Route("cart", name="cart")
+     */
+    public function cartAction(): Response
+    {
+        return $this->render('cart.html.twig', [
+            'controller_name' => 'MainController'
+        ]);
+    }
 
       /**
        * @Route("/aboutus", name="aboutus")
