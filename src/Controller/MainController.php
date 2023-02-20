@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,17 +16,54 @@ class MainController extends AbstractController
     {
         $this->repo = $repo;
     }
+    // /**
+    //  * @Route("/index", name="search", methods={"POST"})
+    //  */
+    // public function searchAction(CategoryRepository $catrepo, Request $request): Response
+    // {
+    //     $query = $request->request->get('search');
+    //     $cat = $catrepo->findAll();
+    //     $products = $this->repo->findProdByName($query);
+    //     return $this->render('main/home.html.twig', [
+    //         'products' => $products,'category' => $cat
+    // ]);
+    // }     
+    
     /**
      * @Route("/index", name="index")
      */
-    public function indexPageAction(CategoryRepository $catrepo): Response
-    {
-        $products = $this->repo->findAll();
+    public function showProductsByCategory(CategoryRepository $catrepo, ProductRepository $productRepository, Request $request)
+    {   
+        if ($request->query->has('name')){
+        $name = $request->query->get('name');
         $cat = $catrepo->findAll();
+        $products = $productRepository->findByCategory($name);
         return $this->render('main/home.html.twig', [
+            'category' => $cat,
+            'products' => $products
+        ]);
+        } else {
+            $products = $this->repo->findAll();
+            $cat = $catrepo->findAll();
+            return $this->render('main/home.html.twig', [
             'products' => $products, 'category' => $cat
         ]);
+        }
     }
+
+    // /**
+    //  * @Route("/index", name="index")
+    //  */
+    // public function indexPageAction(CategoryRepository $catrepo): Response
+    // {
+    //     $products = $this->repo->findAll();
+    //     $cat = $catrepo->findAll();
+    //     return $this->render('main/home.html.twig', [
+    //         'products' => $products, 'category' => $cat
+    //     ]);
+    // }
+
+
 
     /**
      * @Route("/admin", name="adminPage")
@@ -36,7 +74,7 @@ class MainController extends AbstractController
         return $this->render('admin.html.twig', []);
     }
 
-       /**
+    /**
      * @Route("/homepage", name="homepage")
      */
     public function homepageAction(): Response
@@ -45,6 +83,8 @@ class MainController extends AbstractController
             'controller_name' => 'MainController'
         ]);
     }
+
+
     //  /**
     //  * @Route("/{name}", name="findProdByName")
     //  */
@@ -74,26 +114,23 @@ class MainController extends AbstractController
     //     ]);
     // }
 
-    /**
-     * @Route("cart", name="cart")
-     */
-    public function cartAction(): Response
-    {
-        return $this->render('cart.html.twig', [
-            'controller_name' => 'MainController'
-        ]);
-    }
-
     // /**
-    //  * @Route("/cat", name="show_cat")
+    //  * @Route("cart", name="cart")
     //  */
-    // public function showProductCat(CategoryRepository $repo2): Response
+    // public function cartAction(): Response
     // {
-    //     $cat = $repo2->findAll();
-    //     return $this->render('product/index.html.twig', [
-    //         'category' => $cat
+    //     return $this->render('cart.html.twig', [
+    //         'controller_name' => 'MainController'
     //     ]);
-    // }   
+    // }
+
+    //   /**
+    //    * @Route("/aboutus", name="aboutus")
+    //    */
+    //   public function FunctionName(): Response
+    //   {
+    //       return $this->render('aboutus.html.twig', []);
+    //   }
 
      
 }

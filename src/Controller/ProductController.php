@@ -81,9 +81,12 @@ class ProductController extends AbstractController
     public function editAction(
         Request $req,
         Product $p,
-        SluggerInterface $slugger
+        SluggerInterface $slugger,
+        CategoryRepository $catrepo
+        
     ): Response {
 
+        $cat = $catrepo->findAll();
         $form = $this->createForm(ProductType::class, $p);
 
         $form->handleRequest($req);
@@ -101,7 +104,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("product/form.html.twig", [
-            'form' => $form->createView()
+            'form' => $form->createView(),'category' => $cat
         ]);
     }
 
