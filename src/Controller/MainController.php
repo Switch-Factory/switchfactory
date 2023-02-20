@@ -124,13 +124,13 @@ class MainController extends AbstractController
     //     ]);
     // }
 
-    //   /**
-    //    * @Route("/aboutus", name="aboutus")
-    //    */
-    //   public function FunctionName(): Response
-    //   {
-    //       return $this->render('aboutus.html.twig', []);
-    //   }
+      /**
+       * @Route("/aboutus", name="aboutus")
+       */
+      public function FunctionName(): Response
+      {
+          return $this->render('aboutus.html.twig', []);
+      }
 
      
 }
