@@ -38,19 +38,15 @@ class Product
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $supplier;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $quantity;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="product_id")
      */
-    private $category;
+    private $cid;
+
 
     public function getId(): ?int
     {
@@ -105,18 +101,6 @@ class Product
         return $this;
     }
 
-    public function getSupplier(): ?string
-    {
-        return $this->supplier;
-    }
-
-    public function setSupplier(string $supplier): self
-    {
-        $this->supplier = $supplier;
-
-        return $this;
-    }
-
     public function getQuantity(): ?int
     {
         return $this->quantity;
@@ -129,15 +113,16 @@ class Product
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getCid(): ?Category
     {
-        return $this->category;
+        return $this->cid;
     }
 
-    public function setCategory(string $category): self
+    public function setCid(?Category $cid): self
     {
-        $this->category = $category;
+        $this->cid = $cid;
 
         return $this;
     }
+
 }
