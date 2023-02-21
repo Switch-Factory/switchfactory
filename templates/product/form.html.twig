@@ -54,14 +54,9 @@
 									{{ form_widget(form.supplier, {'attr':{'placeholder':'Supplier'}}) }}
 								</div>
 							</div>
-							
 								<div class="col-12">
 								<label for="contact-info-vertical">Category</label>
-								<select class="form-select" aria-label="Default select example" name="p_cat">
-										{% for c in category %}
-											 <option selected>{{c.name}}</option>
-										{% endfor %}
-									</select>
+								{{ form_widget(form.category, {'attr':{'placeholder':'Category'}}) }}
 							</div>
 							<div class="col-12">
 								<div class="form-group">
