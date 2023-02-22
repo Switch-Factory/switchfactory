@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,30 +26,30 @@ class MainController extends AbstractController
         $cat = $catrepo->findAll();
         $products = $this->repo->findProdByName($query);
         return $this->render('main/home.html.twig', [
-            'products' => $products,'category' => $cat
-    ]);
-    }     
-    
+            'products' => $products, 'category' => $cat
+        ]);
+    }
+
     /**
      * @Route("/index", name="index")
      */
     public function showProductsByCategory(CategoryRepository $catrepo, ProductRepository $productRepository, Request $request)
-    {   
-        if ($request->query->has('name')){
-        $name = $request->query->get('name');
-        $cat = $catrepo->findAll();
-        $catID= $catrepo->findBy(array('name'=>$name));
-        $products = $productRepository->findByCategory($catID);
-        return $this->render('main/home.html.twig', [
-            'category' => $cat,
-            'products' => $products
-        ]);
+    {
+        if ($request->query->has('name')) {
+            $name = $request->query->get('name');
+            $cat = $catrepo->findAll();
+            $catID = $catrepo->findBy(array('name' => $name));
+            $products = $productRepository->findByCategory($catID);
+            return $this->render('main/home.html.twig', [
+                'category' => $cat,
+                'products' => $products
+            ]);
         } else {
             $products = $this->repo->findAll();
             $cat = $catrepo->findAll();
             return $this->render('main/home.html.twig', [
-            'products' => $products, 'category' => $cat
-        ]);
+                'products' => $products, 'category' => $cat
+            ]);
         }
     }
 
@@ -81,11 +82,21 @@ class MainController extends AbstractController
         ]);
     }
 
-      /**
-       * @Route("/aboutus", name="aboutus")
-       */
-      public function FunctionName(): Response
-      {
-          return $this->render('aboutus.html.twig', []);
-      }
+    /**
+     * @Route("/aboutus", name="aboutus")
+     */
+    public function FunctionName(): Response
+    {
+        return $this->render('aboutus.html.twig', []);
+    }
+
+    /**
+     * @Route("detail/{id}", name="product_read",requirements={"id"="\d+"})
+     */
+    public function showAction(Product $p): Response
+    {
+        return $this->render('detail.html.twig', [
+            'p' => $p
+        ]);
+    }
 }

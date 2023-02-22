@@ -39,29 +39,50 @@
 
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 						<li>
-							<a href="{{path('index')}}" class="nav-link px-2 text-secondary">Home</a>
+							<a href="{{path('index')}}" class="nav-link px-2 text-secondary">
+								<b>HOME</b>
+							</a>
 						</li>
 						<li>
-							<a class="nav-link" href="{{path('product_show')}}" style="color: #f2e9e4">Product</a>
+							<a href="#" class="nav-link px-2 text-white" style="color: #f2e9e4 !important">
+								<b>CATEGORY</b>
+							</a>
 						</li>
 						<li>
-							<a href="#" class="nav-link px-2 text-white">Category</a>
+							<a href="#" class="nav-link px-2 text-white" style="color: #f2e9e4 !important">
+								<b>FAQ</b>
+							</a>
 						</li>
 						<li>
-							<a href="#" class="nav-link px-2 text-white">FAQs</a>
+							<a href="{{path('aboutus')}}" class="nav-link px-2 text-white ml-2 mr-2" style="color: #f2e9e4 !important">
+								<b>ABOUT US</b>
+							</a>
 						</li>
+
+						{% if is_granted('ROLE_ADMIN')  %}
+							<li>
+								<a class="nav-link" href="{{path('product_show')}}" style="color: #f2e9e4">
+									<b>MANAGE</b>
+								</a>
+							</li>
+						{% endif %}
+
+
 						<li>
-							<a href="{{path('aboutus')}}" class="nav-link px-2 text-white">About</a>
-						</li>
-						<li>
-							<a href="{{path("cart")}}" class="nav-link px-3 text-white" ><i class="bi bi-cart3"></i></a>
+							<a href="{{path("cart")}}" class="nav-link px-3 text-white">
+								<i class="bi bi-cart3"></i>
+							</a>
 						</li>
 					</ul>
 
-					<div class="text-end">
+					<div
+						class="text-end">
+						{% if app.user %}
+						<button onclick="location.href='http://127.0.0.1:8000/logout'" type="button" class="btn btn-outline-light me-2">Logout</button>
+						{% else %}
 						<button onclick="location.href='http://127.0.0.1:8000/login'" type="button" class="btn btn-outline-light me-2">Login</button>
 						<button onclick="location.href='http://127.0.0.1:8000/register'" type="button" class="btn btn-warning me-2">Sign-up</button>
-						<button onclick="location.href='http://127.0.0.1:8000/logout'" type="button" class="btn btn-outline-light me-2">Logout</button>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -83,7 +104,9 @@
 						<div
 							class="container-fluid">
 							<!-- Navbar brand -->
-							<a class="navbar-brand" href="#"><b>Categories:</b></a>
+							<a class="navbar-brand" href="#">
+								<b>Categories:</b>
+							</a>
 
 							<!-- Toggle button -->
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2">
@@ -95,16 +118,18 @@
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									{% for cat in category %}
 										<li class="nav-item acitve">
-											<a class="nav-link text-white" href="{{path('index', {name: cat.name})}}"  name=""><b>{{cat.name}}</b></a>
+											<a class="nav-link text-white" href="{{path('index', {name: cat.name})}}" name="">
+												<b>{{cat.name}}</b>
+											</a>
 										</li>
 									{% endfor %}
 								</ul>
 								<!-- Search -->
 								<div class="input-group mb-3 w-auto">
-								
-								<form class="w-auto py-1" href="{{path('search')}}" style="max-width: 12rem" method='POST'>	  
-									<input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search" name="search"> 
-								</form> 
+
+									<form class="w-auto py-1" href="{{path('search')}}" style="max-width: 12rem" method='POST'>
+										<input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search" name="search">
+									</form>
 								</div>
 
 							</div>
@@ -119,21 +144,25 @@
 							<div class="row">
 								{% for p in products %}
 									<div class="col-lg-3 col-md-6 mb-4">
-									<a href="{{path('product_read',{"id":p.id})}}" > 
-										<div class="card">
-											<div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light" >
-												{% set img = p.image %}
-												<img src="{{asset('uploads/'~img)}}" class="w-100"/>
+										<a href="{{path('product_read',{"id":p.id})}}">
+											<div class="card">
+												<div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+													{% set img = p.image %}
+													<img src="{{asset('uploads/'~img)}}" class="w-100"/>
+												</div>
+												<div class="card-body" style="background-color: #f5cac3;">
+													<a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
+														<h5 class="card-title mb-2">{{p.name}}</h5>
+													</a>
+													<h6 class="mb-3 price">{{p.price}}
+														VND</h6>
+													<button type="button" class="btn btn-light btn-outline-dark" style="tẽx">
+														<a href="{{path("cart")}}">Add to cart
+															<i class="bi bi-cart-plus"></i>
+														</a>
+													</button>
+												</div>
 											</div>
-											<div class="card-body" style="background-color: #f5cac3;">
-												<a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
-													<h5 class="card-title mb-2">{{p.name}}</h5>
-												</a>
-												<h6 class="mb-3 price">{{p.price}}
-													VND</h6>
-													<button type="button" class="btn btn-light btn-outline-dark" style="tẽx"><a href="{{path("cart")}}" >Add to cart  <i class="bi bi-cart-plus"> </a></i></button>
-											</div>
-										</div>
 										</a>
 									</div>
 								{% endfor %}
@@ -299,7 +328,7 @@
 					color: #fff;
 					margin-top: 5px;
 				}
-				.content{
+				.content {
 					background-color: #9a8c98;
 				}
 
@@ -398,7 +427,7 @@
 					}
 				}
 			</style>
-			<div class="content" >
+			<div class="content">
 				<div class="top">
 					<div class="logo-details">
 						<img style="max-width: 100px" src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.15752-9/331107408_715676833533541_3885101367435613190_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_ohc=iXBtuEUxpSQAX9A9XUr&tn=nrSirqe_iHDbg5jH&_nc_ht=scontent.fsgn2-7.fna&oh=03_AdRncWP0Yc84PpNXKkqh9KmupRR_nVwi9LSsZTmeivwadQ&oe=6412BBFB"></img>

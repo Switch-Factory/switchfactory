@@ -36,7 +36,7 @@
 									<td>{{ p.created|date("m/d/Y")}}</td>
 									<td>{{ p.quantity}}</td>
 									<td>{{ p.cid.name}}</td>
-									<td>Supplier</td>
+									<td>{{ p.sup.name }}</td>
 									<td>
 										<a href="{{path('product_edit',{'id':p.id})}}"><i class="fas fa-edit"></i></a>
 										<a href="{{path('product_delete',{'id':p.id})}}"><i class="fa fa-trash" aria-hidden="true"></i></a>

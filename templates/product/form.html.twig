@@ -18,14 +18,6 @@
 					{{ form_start(form,{'attr':{'class':'form form-vertical'}}) }}
 					<div class="form-body">
 						<div class="row">
-
-
-							<div class="col-12">
-								<div class="form-group">
-									<label for="first-name-vertical">ID</label>
-									{{ form_widget(form.id, {'attr':{'placeholder':'Product ID'}}) }}
-								</div>
-
 								<div class="col-12">
 									<div class="form-group">
 										<label for="first-name-vertical">Product Name</label>
@@ -42,7 +34,6 @@
 									<div class="form-group">
 										<label for="first-name-vertical">Product Date</label>
 										{{ form_widget(form.created, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
-
 									</div>
 								</div>
 
@@ -57,12 +48,10 @@
 											<label for="contact-info-vertical">Category</label>
 											{{ form_widget(form.cid, {'attr':{'placeholder':'Category'}}) }}
 										</div>
-
 										<div class="col-12">
 											<div class="form-group">
 												<label for="image-vertical">
 													{{ form_label(form.file) }}</label>
-
 												{{ form_widget(form.file) }}
 											</div>
 										</div>
