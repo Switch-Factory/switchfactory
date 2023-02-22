@@ -47,12 +47,6 @@ class Product
      */
     private $cid;
 
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -125,14 +119,27 @@ class Product
         return $this;
     }
 
+    // public function __toString() {
+    //     return $this->name;
+    // }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
     public function setId($id)
     {
         $this->id = $id;
 
         return $this;
     }
-
-    // public function __toString() {
-    //     return $this->name;
-    // }
 }
