@@ -28,11 +28,6 @@ class  ProductType extends AbstractType
                 'required' => false,
                 'mapped' => false
             ])
-            ->add('supplier')
-            ->add('category', EntityType::class, [
-                'class'=>Category::class,
-                'choice_label'=>'name'
-            ])
             ->add('image', HiddenType::class, [
                 'required' => false
             ])
