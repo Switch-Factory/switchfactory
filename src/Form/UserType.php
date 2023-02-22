@@ -26,15 +26,13 @@ class UserType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'label'=>'Signup'
-            ])
-            ;
-        }
-    
-        public function configureOptions(OptionsResolver $resolver)
-        {
-            $resolver->setDefaults([
-                'data_class' => User::class,
             ]);
-        }
     }
-    
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => User::class,
+        ]);
+    }
+}
