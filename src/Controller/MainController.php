@@ -37,7 +37,8 @@ class MainController extends AbstractController
         if ($request->query->has('name')){
         $name = $request->query->get('name');
         $cat = $catrepo->findAll();
-        $products = $productRepository->findByCategory($name);
+        $catID= $catrepo->findBy(array('name'=>$name));
+        $products = $productRepository->findByCategory($catID);
         return $this->render('main/home.html.twig', [
             'category' => $cat,
             'products' => $products
