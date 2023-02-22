@@ -8,9 +8,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 
         .about-area {
-            padding-top: 5%;
+            padding-top: 2%;
         }
-
+        .form{
+            background-color:#d5bdaf;
+        }
         .about-img {
             padding-left:0px;
             width:500px;
@@ -69,6 +71,27 @@
         
         /* Media queries */
          @media (max-width: 1400px) {
+            
+            .about-area {
+                padding-top: 10%;
+            }
+            
+            .about-img img {
+                width: 100%;
+                margin-left:-50px;
+            }
+        }
+        @media (max-width: 1200px) {
+            .about-area {
+                padding-top: 10%;
+            }
+            
+            .about-img img {
+                width: 100%;
+                margin-left:-110px; 
+            }
+        }
+        @media (max-width: 993px) {
             .about-area {
                 padding-top: 10%;
             }
@@ -80,21 +103,25 @@
             .about-area {
                 padding-top: 10%;
             }
+          
             .about-img img {
                 width: 100%;
+          
             }
         }
-        
         @media (max-width: 576px) {
             .about-text h2 {
                 font-size: 30px;
             }
             .about-text p {
                 font-size: 16px;
+             
             }
         }
 </style>
+
      <div class="about-area">
+     <div class="form">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -112,6 +139,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 {% endblock %}
