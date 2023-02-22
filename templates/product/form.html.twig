@@ -15,8 +15,7 @@
 				<div
 					class="card-body">
 					{# <form class="form form-vertical" method="POST" action="#"> #}
-					{{ form_start(form,{'attr':{'class':'form form-vertical'}}
-					) }}
+					{{ form_start(form,{'attr':{'class':'form form-vertical'}}) }}
 					<div class="form-body">
 						<div class="row">
 
@@ -45,37 +44,44 @@
 									<label for="contact-info-vertical">Quantity</label>
 									{{ form_widget(form.quantity, {'attr':{'placeholder':'0-100'}}) }}
 								</div>
-							<div class="col-12">
-								<div class="form-group">
-									<label for="image-vertical">
-										{{ form_label(form.file) }}</label>
 
-									{{ form_widget(form.file) }}
+								<div class="col-12">
+									<div class="form-group">
+										<label for="contact-info-vertical">Category</label>
+										{{ form_widget(form.cid, {'attr':{'placeholder':'Category'}}) }}
+									</div>
+
+									<div class="col-12">
+										<div class="form-group">
+											<label for="image-vertical">
+												{{ form_label(form.file) }}</label>
+
+											{{ form_widget(form.file) }}
+										</div>
+									</div>
+									<div class="pt-3">
+										{% set img = form.image.vars.value %}
+										{% if img %}
+											<img src="{{asset('uploads/'~img)}}" class="w-25 shadow p-3 mb-5 bg-body rounded"/>
+										{% else %}
+											<img src="https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png" class="w-25 shadow p-3 mb-5 bg-body rounded"/>
+										{% endif %}
+									</div>
+									<div class="col-12 d-flex justify-content-end pt-2">
+										{{ form_widget(form.save,{'attr':{'class':'btn btn-primary me-2'}}) }}
+										<button type="reset" class="btn btn-secondary">Reset</button>
+									</div>
 								</div>
 							</div>
-							<div class="pt-3">
-								{% set img = form.image.vars.value %}
-								{% if img %}
-									<img src="{{asset('uploads/'~img)}}" class="w-25 shadow p-3 mb-5 bg-body rounded"/>
-								{% else %}
-									<img src="https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png" class="w-25 shadow p-3 mb-5 bg-body rounded"/>
-								{% endif %}
-							</div>
-							<div class="col-12 d-flex justify-content-end pt-2">
-								{{ form_widget(form.save,{'attr':{'class':'btn btn-primary me-2'}}) }}
-								<button type="reset" class="btn btn-secondary">Reset</button>
-							</div>
+							{# </form> #}
+							{{ form_end(form) }}
 						</div>
-					</div>
-					{# </form> #}
-					{{ form_end(form) }}
-				</div>
-				<!--card body-->
+						<!--card body-->
 
+					</div>
+					<!--card content-->
+				</div>
+				<!--card-->
 			</div>
-			<!--card content-->
-		</div>
-		<!--card-->
-	</div>
-	<!--page content-->
-{% endblock %}
+			<!--page content-->
+		{% endblock %}

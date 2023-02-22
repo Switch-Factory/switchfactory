@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -27,6 +28,10 @@ class  ProductType extends AbstractType
                 'label' => 'Product Image',
                 'required' => false,
                 'mapped' => false
+            ])
+            ->add('cid', EntityType::class, [
+                'class'=>Category::class,
+                'choice_label'=>'name'
             ])
             ->add('image', HiddenType::class, [
                 'required' => false
