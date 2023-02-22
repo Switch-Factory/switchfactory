@@ -63,7 +63,7 @@ class Category
     {
         if (!$this->product_id->contains($productId)) {
             $this->product_id[] = $productId;
-            $productId->setPid($this);
+            $productId->setId($this);
         }
 
         return $this;
@@ -73,11 +73,10 @@ class Category
     {
         if ($this->product_id->removeElement($productId)) {
             // set the owning side to null (unless already changed)
-            if ($productId->getPid() === $this) {
-                $productId->setPid(null);
+            if ($productId->getId() === $this) {
+                $productId->setId(null);
             }
         }
-
         return $this;
     }
 }
