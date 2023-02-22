@@ -47,6 +47,12 @@ class Product
      */
     private $cid;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Supplier::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sup;
+
     public function getName(): ?string
     {
         return $this->name;
@@ -139,6 +145,18 @@ class Product
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getSup(): ?Supplier
+    {
+        return $this->sup;
+    }
+
+    public function setSup(?Supplier $sup): self
+    {
+        $this->sup = $sup;
 
         return $this;
     }
