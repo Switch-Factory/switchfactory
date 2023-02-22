@@ -40,6 +40,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birthday;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(?\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
 
         return $this;
     }

@@ -51,20 +51,6 @@ class MainController extends AbstractController
         }
     }
 
-    // /**
-    //  * @Route("/index", name="index")
-    //  */
-    // public function indexPageAction(CategoryRepository $catrepo): Response
-    // {
-    //     $products = $this->repo->findAll();
-    //     $cat = $catrepo->findAll();
-    //     return $this->render('main/home.html.twig', [
-    //         'products' => $products, 'category' => $cat
-    //     ]);
-    // }
-
-
-
     /**
      * @Route("/admin", name="adminPage")
      */
@@ -84,36 +70,6 @@ class MainController extends AbstractController
         ]);
     }
 
-
-    //  /**
-    //  * @Route("/{name}", name="findProdByName")
-    //  */
-    // public function FunctionName(ProductRepository $repo, string $name): Response
-    // {
-    //     $prod = $repo->findProdByName($name);
-    //     return $this->json($prod);
-    // }
-
-    // /**
-    //  * @Route("login", name="login")
-    //  */
-    // public function loginAction(): Response
-    // {
-    //     return $this->render('login.html.twig', [
-    //         'controller_name' => 'MainController'
-    //     ]);
-    // }
-
-    // /**
-    //  * @Route("register", name="registerAccount")
-    //  */
-    // public function registerAction(): Response
-    // {
-    //     return $this->render('register.html.twig', [
-    //         'controller_name' => 'MainController'
-    //     ]);
-    // }
-
     /**
      * @Route("cart", name="cart")
      */
@@ -131,6 +87,4 @@ class MainController extends AbstractController
       {
           return $this->render('aboutus.html.twig', []);
       }
-
-     
 }

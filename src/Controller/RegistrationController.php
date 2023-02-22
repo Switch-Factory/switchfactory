@@ -29,7 +29,7 @@ class RegistrationController extends AbstractController
                 $userPass->hashPassword(
                     $user,
                     $form->get('password')->getData()
-                )
+                ) 
             );
             $user->setRoles(['ROLE_USER']);
 
@@ -40,7 +40,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 }
