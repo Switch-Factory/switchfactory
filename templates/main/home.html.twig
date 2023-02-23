@@ -45,7 +45,7 @@
 						</li>
 						<li>
 							<a href="#" class="nav-link px-2 text-white" style="color: #f2e9e4 !important">
-								<b>CATEGORY</b>
+								<b>BRAND</b>
 							</a>
 						</li>
 						<li>
@@ -69,9 +69,11 @@
 
 
 						<li>
+						{% if is_granted('ROLE_ADMIN') == false %}
 							<a href="{{path("cart")}}" class="nav-link px-3 text-white">
 								<i class="bi bi-cart3"></i>
 							</a>
+							{% endif %}
 						</li>
 					</ul>
 
@@ -104,11 +106,6 @@
 						<!-- Container wrapper -->
 						<div
 							class="container-fluid">
-							<!-- Navbar brand -->
-							<a class="navbar-brand" href="{{path('index')}}">
-								<b>Categories:</b>
-							</a>
-
 							<!-- Toggle button -->
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2">
 								<i class="fas fa-bars"></i>

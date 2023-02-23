@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
     {
         $this->repo = $repo;
     }
-    
+
     /**
      * @Route("/", name="category_show")
      */
@@ -32,7 +32,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/add", name="category_create")
      */
     public function createAction(Request $req): Response
@@ -41,7 +41,7 @@ class CategoryController extends AbstractController
         $form = $this->createForm(CategoryType::class, $c);
 
         $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->repo->add($c, true);
             return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
         }
@@ -54,19 +54,27 @@ class CategoryController extends AbstractController
      * @Route("/delete/{id}",name="category_delete",requirements={"id"="\d+"})
      */
 
-     public function deleteAction(Request $request, Category $c): Response
-     {
-         $this->repo->remove($c, true);
-         return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
-     }
+    public function deleteAction(Request $request, Category $c): Response
+    {
+        $this->repo->remove($c, true);
+        return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
+    }
 
-    //      /**
-    //  * @Route("/edit/{id}",name="category_edit",requirements={"id"="\d+"})
-    //  */
+    /**
+     * @Route("/edit/{id}",name="category_edit",requirements={"id"="\d+"})
+     */
 
-    //  public function editAction(Request $request, Category $c): Response
-    //  {
-    //      $this->repo->remove($c, true);
-    //      return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-    //  }
+    public function editAction(Request $req, Category $c): Response
+    {
+        $form = $this->createForm(CategoryType::class, $c);
+
+        $form->handleRequest($req);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->repo->add($c, true);
+            return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("category/form.html.twig", [
+            'form' => $form->createView()
+        ]);
+    }
 }

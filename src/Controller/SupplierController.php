@@ -63,16 +63,17 @@ class SupplierController extends AbstractController
     /**
      * @Route("/edit/{id}", name="supplier_edit",requirements={"id"="\d+"})
      */
-    public function editAction(Request $req,Supplier $s): Response {
+    public function editAction(Request $req, Supplier $s): Response
+    {
         $form = $this->createForm(SupplierType::class, $s);
 
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
-                $this->repo->add($s, true);
-                return $this->redirectToRoute('supplier_show', [], Response::HTTP_SEE_OTHER);
-            }
+            $this->repo->add($s, true);
+            return $this->redirectToRoute('supplier_show', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->render("supplier/form.html.twig", [
             'form' => $form->createView()
         ]);
-}
+    }
 }
