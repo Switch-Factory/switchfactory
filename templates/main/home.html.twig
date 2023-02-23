@@ -98,8 +98,112 @@
 		{% block body %}
 			<!--Main layout-->
 			<main>
+				
+
+
 				<div
 					class="container">
+
+					<!--Carousel-->
+
+						<div class="slideshow-container">
+
+								<div class="mySlides fade">
+									<div class="numbertext">1 / 10</div>
+									<img src="https://i.shgcdn.com/eb54d2d3-5b5f-471c-8396-04c129f35d94/-/format/auto/-/preview/3000x3000/-/quality/best/" style="width:1300px; height:550px">
+									<div class="text"></div>+
+								</div>
+
+								<div class="mySlides fade">
+									<div class="numbertext">2 / 10</div>
+									<img src="https://kdvr.com/wp-content/uploads/sites/11/2022/08/000_best-razer-gaming-keyboard-76264c.jpg" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+
+								<div class="mySlides fade">
+									<div class="numbertext">3 / 10</div>
+									<img src="https://media.steelseriescdn.com/thumbs/blog/posts/how-to-choose-the-right-gaming-keyboard/3f91bf6de6ad4e3ca3c86bd3b46264c5.jpg.1200x630_q100_crop-scale_optimize_upscale.jpg" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">4/ 10</div>
+									<img class="imagesbanner"src="https://cdn.appuals.com/wp-content/uploads/2019/07/m750_photo_product_001.jpg" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">5 / 10</div>
+									<img src="https://www.popsci.com/uploads/2022/05/10/close-up-to-rbg-colored-keyboard.jpg?auto=webp" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">6 / 10</div>
+									<img src="https://www.kotaku.com.au/wp-content/uploads/sites/3/2022/08/16/iStock-1127735227.jpeg?quality=80&resize=1280,720" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">7 / 10</div>
+									<img src="https://assets-prd.ignimgs.com/2022/06/12/keyboard-2-1655071227274.jpg?width=1280" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">8 / 10</div>
+									<img src="https://www.zdnet.com/a/img/resize/3b85264910ef2c5a390c0fcb3f97fe164e4e9cee/2022/11/14/522ae103-1a94-4925-8ec9-fbd747df10ae/steelseries-apex-pro.jpg?auto=webp&fit=crop&height=900&width=1200" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">9 / 10</div>
+									<img src="https://static.ffx.io/images/$zoom_0.333%2C$multiply_0.9735%2C$ratio_1.5%2C$width_756%2C$x_103%2C$y_9/t_crop_custom/q_86%2Cf_auto/65bca7d0452a84661112010b5481fb033f74ea21" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+								<div class="mySlides fade">
+									<div class="numbertext">10 / 10</div>
+									<img src="https://i.etsystatic.com/24507784/r/il/80900e/3839913612/il_570xN.3839913612_tkcp.jpg" style="width:1300px; height:550px">
+									<div class="text"></div>
+								</div>
+
+							</div>
+							<br>
+
+							<div class="center" style="text-align:center">
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+								
+							</div>
+
+							<script>
+								let slideIndex = 0;
+						showSlides();
+
+						function showSlides() {
+						let i;
+						let slides = document.getElementsByClassName("mySlides");
+						let dots = document.getElementsByClassName("dot");
+						for (i = 0; i < slides.length; i++) {
+						slides[i].style.display = "none";
+						}
+						slideIndex++;
+						if (slideIndex > slides.length) {
+						slideIndex = 1
+						}
+						for (i = 0; i < dots.length; i++) {
+						dots[i].className = dots[i].className.replace(" active", "");
+						}
+						slides[slideIndex - 1].style.display = "block";
+						dots[slideIndex - 1].className += " active";
+						setTimeout(showSlides, 1500); // Change image every 2 seconds
+						}
+							</script>
+							
+					<!-- Navbar -->
 					<!-- Navbar -->
 					<nav
 						class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #9a8c98">
@@ -136,62 +240,7 @@
 					</nav>
 					<!-- Navbar -->
 					
-					<!--Carousel-->
-
-						<div class="slideshow-container">
-
-								<div class="mySlides fade">
-									<div class="numbertext">1 / 3</div>
-									<img src="/switchfactory/public/images/ash.jpg" style="width:100%">
-									<div class="text"></div>
-								</div>
-
-								<div class="mySlides fade">
-									<div class="numbertext">2 / 3</div>
-									<img src="/switchfactory/public/images/ash.jpg" style="width:100%">
-									<div class="text"></div>
-								</div>
-
-								<div class="mySlides fade">
-									<div class="numbertext">3 / 3</div>
-									<img src="/switchfactory/public/images/ash.jpg" style="width:100%">
-									<div class="text"></div>
-								</div>
-
-							</div>
-							<br>
-
-							<div style="text-align:center">
-								<span class="dot"></span>
-								<span class="dot"></span>
-								<span class="dot"></span>
-							</div>
-
-							<script>
-								let slideIndex = 0;
-						showSlides();
-
-						function showSlides() {
-						let i;
-						let slides = document.getElementsByClassName("mySlides");
-						let dots = document.getElementsByClassName("dot");
-						for (i = 0; i < slides.length; i++) {
-						slides[i].style.display = "none";
-						}
-						slideIndex++;
-						if (slideIndex > slides.length) {
-						slideIndex = 1
-						}
-						for (i = 0; i < dots.length; i++) {
-						dots[i].className = dots[i].className.replace(" active", "");
-						}
-						slides[slideIndex - 1].style.display = "block";
-						dots[slideIndex - 1].className += " active";
-						setTimeout(showSlides, 2500); // Change image every 2 seconds
-						}
-							</script>
-							
-					<!-- Navbar -->
+					
 
 					
 					<!-- Products -->
@@ -312,7 +361,20 @@
 				.text {font-size: 11px}
 				}
 				/*end slider*/
+				.mySlides fade{
+					width:100%;
 
+				}
+				.slideshow-container{
+						width:10%%;
+						margin-left:-10px;
+						margin-top:1px;
+						/* display:none; */
+					}
+				.center{
+					display: none;
+
+				}
 
 				.slider-margin {
 					margin-top: 20px;
@@ -509,7 +571,19 @@
 						width: 40%;
 						margin-top: 10px;
 					}
+					.slideshow-container{
+
+						margin-left:-10px;
+						width:100%;
+						
+					}
+					.imagesbanner{
+						width:;
+					}
 				}
+				
+
+
 				@media(max-width: 700px) {
 					footer {
 						position: relative;
@@ -532,6 +606,12 @@
 					.bottom-details .bottom_text span,
 					.bottom-details .bottom_text a {
 						font-size: 12px;
+					}
+					.slideshow-container{
+						display:none;
+
+						margin-left:-10px;
+						width:50%;
 					}
 				}
 				@media(max-width: 520px) {
