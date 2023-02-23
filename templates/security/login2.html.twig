@@ -1,47 +1,61 @@
 {% extends 'main/home.html.twig' %}
 
-{% block title %}Login
-{% endblock %}
+{% block title %}Log in!{% endblock %}
+
+
 
 {% block body %}
 
-	<form id="frmLogin" name="frmRegister" action="login.php" method="POST" role="form" onsubmit="return formValid();">
-		<section class="vh-100 gradient-custom">
-			<div class="container py-5 h-100">
-				<div class="row d-flex justify-content-center align-items-center h-100">
-					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
-						<div class="card bg-dark text-white" style="border-radius: 1rem;">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-							<div class="card-body p-5 text-center">
-								{# {{ form_start(form) }} #}
-								<div class="mb-md-5 mt-md-4 pb-5">
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>zalo
+    {% endif %}
+	<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-									<h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-									<p class="text-white-50 mb-5">Please enter your email and password!</p>
+            <div class="mb-md-5 mt-md-4 pb-5">
 
-									<div class="form-outline form-white mb-4">
-										<input type="email" id="typeEmail" class="form-control form-control-lg" name="txtEmail"/>
-										<label class="form-label" for="typeEmail">Email</label>
-									</div>
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
-									<div class="form-outline form-white mb-4">
-										<input type="password" id="typePasswordX" class="form-control form-control-lg" name="txtPass1"/>
-										<label class="form-label" for="typePasswordX">Password</label>
-									</div>
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg"value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus />
+                <label class="form-label" for="typeEmailX">Email</label>
+              </div>
 
-									<input type="submit" value="Login" class="btn btn-primary" name="btnLogin" id="btnLogin">
-								</div>
-								<div>
-									<a href="register" class="text-white-50 fw-bold">Register</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" id="inputPassword" autocomplete="current-password" required />
+                <label class="form-label" for="typePasswordX">Password</label>
+              </div>
+			  
+				<input type="hidden" name="_csrf_token"
+						value="{{ csrf_token('authenticate') }}">
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+         </div>
 
+            <div>
+              <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</form>
 	<style>
 		b center {
 			color: red;
