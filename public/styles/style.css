@@ -63,12 +63,19 @@ color:#263238
   margin-top: 0px;
   padding: 17px
 }
-
+/* 
 .product_name {
   font-size: 40px;
   font-weight: 400;
   margin-top: 0px;
   color: darkblue;
+  font-weight: bold;
+  font-family: Georgia;
+  text-align: center;
+  
+} */
+.product_name:hover{
+  color:darkviolet;
 }
 
 .badge {
@@ -91,13 +98,16 @@ color:#263238
   color: #5b5b5b
 }
 
-.product_price {
+/* .product_price {
   display: inline-block;
+  text-align: center;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: bold;
   margin-top: 9px;
-  clear: left
-}
+  clear: left;
+ 
+  
+} */
 
 .product_discount {
   display: inline-block;
@@ -126,7 +136,11 @@ color:#263238
 
 .product_info {
   color: #4d4d4d;
-  display: inline-block
+  display: inline-block;
+  font-family: Tahoma;
+  font-weight: bold;
+  font-family: sans-serif;
+  
 }
 
 .product_options {

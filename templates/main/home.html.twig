@@ -48,11 +48,11 @@
 							<div class="dropdown">
 							<a class="nav-link px-2 text-white dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: #f2e9e4 !important">Brand</a>
 								<div class="dropdown-menu">								
-									{% for sup in supplier %}											
-											<a class="dropdown-item" href="{{path('index', {suppname: sup.id})}}" name="">
+									{% for sup in supplier %}											 
+											 <a class="dropdown-item" href="{{path('index', {suppname: sup.id})}}" name="">
 												<b>{{sup.name}}</b>
-											</a>
-									{% endfor %}
+											</a> 
+								 {% endfor %} 
 								</div>
 								</div>
 							</a>

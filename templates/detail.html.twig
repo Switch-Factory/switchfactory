@@ -3,7 +3,123 @@
     Detail of product {{p.id}}
 {% endblock %}
 {% block body %}
-<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+<style>
+
+.detail-text{
+  text-decoration: none;
+  color: #fff;
+}
+.detail-text:hover{
+   color:#FFCCFF;
+  
+}
+
+
+
+.shop-button {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.shop-button:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-shop-button 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-shop-button {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.shop-button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.detailBG{
+  background-color: #d2c9ff;
+
+}
+.image_selected{
+  box-shadow: 5px 5px 5px #666699;
+}
+.detail-font{
+    font-size:20px
+}
+.product_name{
+   color: #b48608; 
+   font-family: 'Droid serif', serif; 
+   font-size: 70px; 
+   font-weight: 400; 
+   font-style: italic; 
+   line-height: 44px; 
+   margin: 0 0 12px; 
+   text-align: center;
+}
+.product_price{
+  color: #111; 
+  font-family: 'Open Sans Condensed', sans-serif; 
+  font-size: 48px; 
+  font-weight: 700; 
+  line-height: 48px; 
+  margin: 0 0 24px; 
+  padding: 0 30px; 
+  text-align: center; 
+  text-transform: uppercase; 
+}
+
+
+
+
+
+</style>
+<section class="detailBG" class="h-100 h-custom" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
@@ -13,7 +129,7 @@
             <div class="col-lg-5 p-5">
                     <div class="image_selected ms-3">
                     {% set img = p.image %}
-                        <img src="{{asset('uploads/'~img)}}"
+                        <img  src="{{asset('uploads/'~img)}}"
                         class="w-100" />
                     </div>
                 </div>
@@ -21,11 +137,11 @@
                     <div class="product_description">
                         <div class="product_name">{{p.name}}</div>
                         
-                        <div> <span class="product_price"><span>&#8363;</span> {{p.price}}</div>
+                        <div style="text-align: center;"> <span class="product_price"> {{p.price}}<span>&#8363;</span></div><br>
     
-                        <div>  
-                            <span class="product_info">Date: {{p.created|date("m/d/Y")}}<span><br> 
-                            <span class="product_info">In Stock: {{p.quantity}}<span> </div>
+                        <div class="detail-font" style="text-align: center;">   
+                            <span class="product_info">Date :{{p.created|date("m/d/Y")}}<span><br> <br>
+                            <span class="product_info">In Stock :{{p.quantity}}<span> </div>
                         
                         <hr class="singleline">
                         <div class="order_info d-flex flex-row">
@@ -33,15 +149,12 @@
                         </div>
                         <div class="row">
                             <form action="#" method="get">
-                            <div class="col-lg-3 mb-4" style="margin-left: 13px;">
-                                <div class="form-group">
-                                    <label for="qty_label">Quantity:</label>
-                                    <input type="number" id="quantity_input" class="form-control" name="quantity_input" value="1" >     
-                                </div>
-                            </div>
-                            <div class="col-lg-9"> <button type="submit" class="btn btn-primary shop-button">Add to Cart</button> 
-                            <!-- <button type="button" class="btn btn-success shop-button">Buy Now</button> -->
-                            </div>
+                           
+                              <div class="col-lg-12 p-5" style="text-align: center;" > <button  type="submit" class="btn btn-primary shop-button" >
+                              <a class="detail-text"href="http://127.0.0.1:8000/cart">Add to Cart</a>
+                              </button> 
+                              <!-- <button type="button" class="btn btn-success shop-button">Buy Now</button> -->
+                              </div>
                             </form>
                         </div>
                     </div>
