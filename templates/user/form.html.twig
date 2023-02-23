@@ -12,81 +12,39 @@
 	<div class="page-content mt-4">
 		<div class="card">
 			<div class="card-content">
-				<div
-					class="card-body">
-					{# <form class="form form-vertical" method="POST" action="#"> #}
+				<div class="card-body">
 					{{ form_start(form,{'attr':{'class':'form form-vertical'}}) }}
 					<div class="form-body">
 						<div class="row">
 							<div class="col-12">
 								<div class="form-group">
 									<label for="first-name-vertical">User Name</label>
-									{{ form_widget(user.name, {'attr':{'placeholder':'User Name'}}) }}
+									{{ form_widget(form.name, {'attr':{'placeholder':'User Name'}}) }}
 								</div>
 							</div>
 
 							<div class="col-12">
 								<div class="form-group">
 									<label for="contact-info-vertical">Email</label>
-									{{ form_widget(user.email, {'attr':{'placeholder':'Email'}}) }}
+									{{ form_widget(form.email, {'attr':{'placeholder':'Email'}}) }}
 								</div>
 							</div>
 
 							<div class="col-12">
 								<div class="form-group">
 									<label for="first-name-vertical">Birthday</label>
-									{{ form_widget(user.birthday, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
+									{{ form_widget(form.birthday, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
 								</div>
 							</div>
-
-							<div class="col-12">
-								<div class="form-group">
-									<label for="contact-info-vertical">Quantity</label>
-									{{ form_widget(form.quantity, {'attr':{'placeholder':'0-100'}}) }}
-								</div>
-
-								<div class="col-12">
-									<div class="form-group">
-										<label for="contact-info-vertical">Category</label>
-										{{ form_widget(form.cid, {'attr':{'placeholder':'Category'}}) }}
-									</div>
-
-									<div class="col-12">
-										<div class="form-group">
-											<label for="contact-info-vertical">Supplier</label>
-											{{ form_widget(form.sup, {'attr':{'placeholder':'Supplier'}}) }}
-										</div>
-
-										<div class="col-12">
-											<div class="form-group">
-												<label for="image-vertical">
-													{{ form_label(form.file) }}</label>
-												{{ form_widget(form.file) }}
-											</div>
-										</div>
-										<div class="pt-3">
-											{% set img = form.image.vars.value %}
-											{% if img %}
-												<img src="{{asset('uploads/'~img)}}" class="w-25 shadow p-3 mb-5 bg-body rounded"/>
-											{% else %}
-												<img src="https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png" class="w-25 shadow p-3 mb-5 bg-body rounded"/>
-											{% endif %}
-										</div>
-										<div class="col-12 d-flex justify-content-end pt-2">
-											{{ form_widget(form.save,{'attr':{'class':'btn btn-primary me-2'}}) }}
-											<button type="reset" class="btn btn-secondary">Reset</button>
-										</div>
-									</div>
-								</div>
-								{# </form> #}
-								{{ form_end(form) }}
+							<div class="col-12 d-flex justify-content-end pt-2">
+								{{ form_widget(form.save,{'attr':{'class':'btn btn-primary me-2'}}) }}
+								<button type="reset" class="btn btn-secondary">Reset</button>
 							</div>
-							<!--card body-->
-
 						</div>
-						<!--card content-->
 					</div>
-					<!--card-->
+					{{ form_end(form) }}
 				</div>
-				<!--page content-->
-			{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

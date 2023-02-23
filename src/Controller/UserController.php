@@ -28,7 +28,7 @@ class UserController extends AbstractController
     {
         $user = $this->repo->findAll();
         return $this->render('user/index.html.twig', [
-            'user' => $user
+            'u' => $user
         ]);
     }
 
@@ -55,7 +55,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("user/form.html.twig", [
-            'form' => $form->createView()
+            'form' => $form->createView(), 'u' => $user
         ]);
     }
 }
