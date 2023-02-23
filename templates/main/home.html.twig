@@ -43,9 +43,18 @@
 								<b>HOME</b>
 							</a>
 						</li>
-						<li>
-							<a href="#" class="nav-link px-2 text-white" style="color: #f2e9e4 !important">
-								<b>BRAND</b>
+						<li>							
+							
+							<div class="dropdown">
+							<a class="nav-link px-2 text-white dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: #f2e9e4 !important">Brand</a>
+								<div class="dropdown-menu">								
+									{% for sup in supplier %}											
+											<a class="dropdown-item" href="{{path('index', {suppname: sup.id})}}" name="">
+												<b>{{sup.name}}</b>
+											</a>
+									{% endfor %}
+								</div>
+								</div>
 							</a>
 						</li>
 						<li>

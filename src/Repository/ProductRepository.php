@@ -59,6 +59,18 @@ class ProductRepository extends ServiceEntityRepository
            ->getQuery()
            ->getResult();
    }
+   
+   /**
+    * @return Product[] Returns an array of Product objects
+    */
+   public function findBySupplier($supplierID): array
+   {
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.sup = :supplierID')
+        ->setParameter('supplierID', $supplierID)
+        ->getQuery()
+        ->getResult();
+   }
 
 //    /**
 //     * @return Product[] Returns an array of Product objects
