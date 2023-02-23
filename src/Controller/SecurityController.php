@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\SupplierRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function loginAction(AuthenticationUtils $authenticationUtils): Response
+    public function loginAction(AuthenticationUtils $authenticationUtils, SupplierRepository $sup): Response
     {
         //get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -21,7 +22,8 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login2.html.twig', [
             'last_username'=>$lastUsername,
-            'error'=>$error
+            'error'=>$error,
+            'supplier' => $sup            
         ]);
     }
     /**

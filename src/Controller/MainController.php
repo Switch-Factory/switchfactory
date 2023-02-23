@@ -92,22 +92,25 @@ class MainController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("cart", name="cart")
-     */
-    public function cartAction(): Response
-    {
-        return $this->render('cart.html.twig', [
-            'controller_name' => 'MainController'
-        ]);
-    }
+    // /**
+    //  * @Route("/cart", name="cart")
+    //  */
+    // public function cartAction(SupplierRepository $suprepo): Response
+    // {   
+    //     $sup = $suprepo->findAll();
+    //     return $this->render('cart.html.twig', [
+    //         'supplier' => $sup,
+    //         'controller_name' => 'MainController'
+            
+    //     ]);
+    // }
 
     /**
      * @Route("/aboutus", name="aboutus")
      */
-    public function FunctionName(): Response
-    {
-        return $this->render('aboutus.html.twig', []);
+    public function FunctionName(SupplierRepository $suprepo): Response
+    {    $sup = $suprepo->findAll();    
+        return $this->render('aboutus.html.twig', ['supplier' => $sup]);
     }
 
     /**
