@@ -21,13 +21,14 @@ class MainController extends AbstractController
     /**
      * @Route("/index", name="search", methods={"POST"})
      */
-    public function searchAction(CategoryRepository $catrepo,Request $request): Response
+    public function searchAction(CategoryRepository $catrepo, SupplierRepository $suprepo, Request $request): Response
     {
         $query = $request->request->get('search');
         $cat = $catrepo->findAll();
+        $sup = $suprepo->findAll();
         $products = $this->repo->findProdByName($query);
         return $this->render('main/home.html.twig', [
-            'products' => $products, 'category' => $cat 
+            'products' => $products, 'category' => $cat , 'supplier' => $sup
         ]);
     }
 
