@@ -60,13 +60,13 @@ class CategoryController extends AbstractController
          return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
      }
 
-         /**
-     * @Route("/edit/{id}",name="category_edit",requirements={"id"="\d+"})
-     */
+    //      /**
+    //  * @Route("/edit/{id}",name="category_edit",requirements={"id"="\d+"})
+    //  */
 
-     public function editAction(Request $request, Category $c): Response
-     {
-         $this->repo->remove($c, true);
-         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-     }
+    //  public function editAction(Request $request, Category $c): Response
+    //  {
+    //      $this->repo->remove($c, true);
+    //      return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+    //  }
 }

@@ -33,6 +33,10 @@ class  ProductType extends AbstractType
                 'class'=>Category::class,
                 'choice_label'=>'name'
             ])
+            ->add('sup', EntityType::class, [
+                'class'=>Supplier::class,
+                'choice_label'=>'name'
+            ])
             ->add('image', HiddenType::class, [
                 'required' => false
             ])

@@ -18,36 +18,43 @@
 					{{ form_start(form,{'attr':{'class':'form form-vertical'}}) }}
 					<div class="form-body">
 						<div class="row">
-								<div class="col-12">
-									<div class="form-group">
-										<label for="first-name-vertical">Product Name</label>
-										{{ form_widget(form.name, {'attr':{'placeholder':'Product Name'}}) }}
-									</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="first-name-vertical">Product Name</label>
+									{{ form_widget(form.name, {'attr':{'placeholder':'Product Name'}}) }}
 								</div>
-								<div class="col-12">
-									<div class="form-group">
-										<label for="contact-info-vertical">Price</label>
-										{{ form_widget(form.price, {'attr':{'placeholder':'Price'}}) }}
-									</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="contact-info-vertical">Price</label>
+									{{ form_widget(form.price, {'attr':{'placeholder':'Price'}}) }}
 								</div>
-								<div class="col-12">
-									<div class="form-group">
-										<label for="first-name-vertical">Product Date</label>
-										{{ form_widget(form.created, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
-									</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="first-name-vertical">Product Date</label>
+									{{ form_widget(form.created, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
+								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+									<label for="contact-info-vertical">Quantity</label>
+									{{ form_widget(form.quantity, {'attr':{'placeholder':'0-100'}}) }}
 								</div>
 
 								<div class="col-12">
 									<div class="form-group">
-										<label for="contact-info-vertical">Quantity</label>
-										{{ form_widget(form.quantity, {'attr':{'placeholder':'0-100'}}) }}
+										<label for="contact-info-vertical">Category</label>
+										{{ form_widget(form.cid, {'attr':{'placeholder':'Category'}}) }}
 									</div>
 
 									<div class="col-12">
 										<div class="form-group">
-											<label for="contact-info-vertical">Category</label>
-											{{ form_widget(form.cid, {'attr':{'placeholder':'Category'}}) }}
+											<label for="contact-info-vertical">Supplier</label>
+											{{ form_widget(form.sup, {'attr':{'placeholder':'Supplier'}}) }}
 										</div>
+
 										<div class="col-12">
 											<div class="form-group">
 												<label for="image-vertical">

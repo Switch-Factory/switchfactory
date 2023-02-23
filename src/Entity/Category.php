@@ -25,7 +25,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=product::class, mappedBy="pid")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="pid")
      */
     private $product_id;
 
