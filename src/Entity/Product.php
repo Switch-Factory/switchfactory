@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +54,16 @@ class Product
      * @ORM\JoinColumn(nullable=false)
      */
     private $sup;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Cart::class, mappedBy="product")
+     */
+    private $carts;
+
+    public function __construct()
+    {
+        $this->carts = new ArrayCollection();
+    }
 
     public function getName(): ?string
     {
@@ -157,6 +169,33 @@ class Product
     public function setSup(?Supplier $sup): self
     {
         $this->sup = $sup;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cart>
+     */
+    public function getCarts(): Collection
+    {
+        return $this->carts;
+    }
+
+    public function addCart(Cart $cart): self
+    {
+        if (!$this->carts->contains($cart)) {
+            $this->carts[] = $cart;
+            $cart->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCart(Cart $cart): self
+    {
+        if ($this->carts->removeElement($cart)) {
+            $cart->removeProduct($this);
+        }
 
         return $this;
     }
