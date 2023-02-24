@@ -25,26 +25,28 @@
 
             <div class="mb-md-5 mt-md-4 pb-5">
 
-              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+              <h2 class="login-h2" class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p  class=" mb-5">Please enter your login and password!</p>
 
               <div class="form-outline form-white mb-4">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg"value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus />
                 <label class="form-label" for="typeEmailX">Email</label>
+                <input type="email" id="typeEmailX" class="form-control form-control-lg"value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus />
+                
               </div>
 
               <div class="form-outline form-white mb-4">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" id="inputPassword" autocomplete="current-password" required />
                 <label class="form-label" for="typePasswordX">Password</label>
+                <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" id="inputPassword" autocomplete="current-password" required />
+                
               </div>
 			  
 				<input type="hidden" name="_csrf_token"
 						value="{{ csrf_token('authenticate') }}">
-              <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+              <button class="login-button" class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
          </div>
 
             <div>
-              <p class="mb-0">Don't have an account? <a href="register" class="text-white-50 fw-bold">Sign Up</a>
+              <p class="mb-0">Don't have an account? <a href="register" class="login-signup" class="text-white-50 fw-bold">Sign Up</a>
               </p>
             </div>
 
@@ -60,5 +62,109 @@
 		b center {
 			color: red;
 		}
+
+    .login-h2{
+      color: #d04764; 
+      font-family: 'Lobster', cursive; 
+      font-size: 70px; 
+      font-weight: bold; 
+      line-height: 48px; 
+      margin: 9px 0 18px; 
+     text-shadow: 3px 3px 3px #fff;
+     
+    }
+    .login-h2:hover{
+      color:#FFCCCC;
+    }
+    .mb-5{
+      color: #FFCCCC; 
+      font-family: 'Original Surfer', cursive;
+      font-size: 17px; 
+      line-height: 28px; 
+      margin: 40px 0 20px;
+      margin-bottom:5px;
+      display:;
+   
+    }
+
+
+      /* CSS */
+      .login-button {
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(238 48 167);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .login-button:before {
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-login-button 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+      }
+
+      @keyframes glowing-login-button {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+
+      .login-button:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+      }
+      .login-button:hover{
+        color: #DDC488;
+      }
+      .login-signup{
+         color:#EE30A7;
+          text-decoration:none;
+          font-family:Arial Black;
+      }
+      .login-signup:hover{
+        color:#FFBBFF;
+      }
 	</style>
 {% endblock %}

@@ -40,11 +40,6 @@ class Product
     private $image;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $quantity;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="product_id")
      */
     private $cid;
@@ -115,18 +110,6 @@ class Product
     public function setImage(?string $image =null): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(?int $quantity): self
-    {
-        $this->quantity = $quantity;
 
         return $this;
     }

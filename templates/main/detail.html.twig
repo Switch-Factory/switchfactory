@@ -30,8 +30,6 @@
 											<div class="detail-font" style="text-align: center;">
 												<span class="product_info">Date :{{p.created|date("m/d/Y")}}<span><br>
 														<br>
-														<span class="product_info">In Stock :{{p.quantity}}<span></div>
-
 															<hr class="singleline">
 
 															<form action="{{path('cart_add', {'id':p.id})}}" method="get">

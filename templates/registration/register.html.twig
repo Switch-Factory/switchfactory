@@ -9,17 +9,16 @@ Register
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
-      <div class="col-12 col-lg-9 col-xl-7">
+      <div  class="col-12 col-lg-9 col-xl-7">
         <div
-          class="card shadow-2-strong card-registration"
-          style="border-radius: 15px">
-          <div class="card-body p-4 p-md-5 bg-dark">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: White;">REGISTRATION</h3>
+          class="card shadow-2-strong card-registration">
+          <div class="card-body p-4 p-md-5 ">
+            <h3 class="regis-h3" class="mb-4 pb-2 pb-md-0 mb-md-5" >REGISTRATION</h3>
             {{ form_start(form) }}
               <div class="row">
                 <div class="col-md-12 mb-4">
                   <div class="form-outline">
-<label for="" class="mb-1" style="color: white;">Full Name</label>
+<label for="" class="regis-label-1" class="mb-1"  style="color: white;" >Full Name</label>
 					{{ form_widget(form.name) }}
                   </div>
                 </div>
@@ -58,8 +57,14 @@ Register
                   </div>
                 </div>
               </div>
-              <div class="mt-4 pt-2" >
-                {{ form_widget(form.save) }}
+
+                <div>
+              <p class="mb-0">Already have an account? <a href="login" class="regis-login" class="text-white-50 fw-bold">Login</a>
+              </p>
+            </div>
+
+              <div class="mt-4 pt-2" class="regis-button">
+                {{ form_widget(form.save,{'attr':{'class':'regis-button'}})}}
                 
               </div>
              {{ form_end(form) }}
@@ -81,5 +86,118 @@ Register
   .card-registration .select-arrow {
     top: 13px;
   }
+  .mb-0{
+    color: #fff;
+  }
+  .regis-h3{
+     color:#FF3399; 
+     font-family: 'Original Surfer', cursive; 
+     font-size: 55px; 
+     font-weight: bold; 
+     line-height: 48px; 
+     margin: 16px 0 40px; 
+     text-shadow: 3px 3px 3px #DDC488;
+  }
+  .regis-h3:hover{
+    color:#C0C0C0	;
+  }
+  .card {
+    border-radius: 30px;
+  }
+  .card-registration{
+    border-radius: 30px;
+  }
+  .col-12 .col-lg-9 .col-xl-7{
+    border-radius: 30px;
+  }
+  .card-body{
+    border-radius: 30px;
+    background-color:#000;
+    box-shadow: 5px 5px 5px 	#FFCCFF;
+  }
+
+        /* CSS */
+        .regis-button {
+          padding: 0.6em 2em;
+          border: none;
+          outline: none;
+          color: rgb(238 48 167);
+          background: #111;
+          cursor: pointer;
+          position: relative;
+          z-index: 0;
+          border-radius: 10px;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
+
+        .regis-button:before {
+          content: "";
+          background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+          );
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          background-size: 400%;
+          z-index: -1;
+          filter: blur(5px);
+          -webkit-filter: blur(5px);
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          animation: glowing-regis-button 20s linear infinite;
+          transition: opacity 0.3s ease-in-out;
+          border-radius: 10px;
+        }
+
+        @keyframes glowing-regis-button {
+          0% {
+            background-position: 0 0;
+          }
+          50% {
+            background-position: 400% 0;
+          }
+          100% {
+            background-position: 0 0;
+          }
+        }
+
+        .regis-button:after {
+          z-index: -1;
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: #222;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+        }
+        .regis-button:hover{
+          color: #DDC488;
+        }
+        /* .regis-label-{
+          color:#fff;
+          display:flex;
+        } */
+        .regis-login{
+          color:#EE30A7;
+          text-decoration:none;
+          font-family:Arial Black;
+        }
+        .regis-login:hover{
+          color:#FFBBFF;
+        }
+
 </style>
 {% endblock %}
