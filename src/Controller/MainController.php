@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\Product;
 use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
@@ -126,9 +127,9 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/add/{id}", name="cart_add")
+     * @Route("cartmain/add/{id}", name="cartadd_formmain")
      */
-    public function addCartAction(CartRepository $repo, Product $product, CategoryRepository $cateRepo, Request $req): Response
+    public function addCartActionFromMain(CartRepository $repo, Product $product, CategoryRepository $cateRepo, Request $req): Response
     {
         $quantity = $req->query->get('quantity');
         $user = $this->getUser();
@@ -145,12 +146,12 @@ class MainController extends AbstractController
         if (count($carts) == 0) {
             $cart = new Cart();
             $cart->setProduct($product);
-            $cart->setQuantity($quantity);
+            $cart->setQuantity(1);
             $cart->setUser($user);
         } else {
             $cart = $repo->find($carts[0]->getId());
             $oldquantity = $cart->getQuantity();
-            $newquantity = $oldquantity + $quantity;
+            $newquantity = $oldquantity + 1;
             $cart->setquantity($newquantity);
         }
         $repo->add($cart, true);
