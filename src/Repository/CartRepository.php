@@ -39,6 +39,18 @@ class CartRepository extends ServiceEntityRepository
         }
     }
 
+       public function updateProInCart($id, $proid, $quantity)
+       {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = "       
+            UPDATE cart
+            SET quantity = :quantity
+            WHERE user_id = :id AND product_id = :proid
+        ";
+        $re = $conn->executeQuery($sql,['id'=>$id,'proid'=>$proid,'quantity'=>$quantity]);
+        return $re->fetchAllAssociative();
+       }
+
     //    /**
     //     * @return Cart[] Returns an array of Cart objects
     //     */
@@ -70,7 +82,7 @@ class CartRepository extends ServiceEntityRepository
     public function showCartAction($value): array
     {
         return $this->createQueryBuilder('c')
-            ->select('p.id, p.image, p.name, p.price, c.quantity as quantity, p.price*c.quantity as total')
+            ->select('p.id as id, p.image, p.name, p.price, c.quantity as quantity, p.price*c.quantity as total')
             ->innerJoin('c.product', 'p')
             ->Where('c.user = :id')
             ->setParameter('id', $value)
