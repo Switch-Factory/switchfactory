@@ -60,9 +60,15 @@ class Product
      */
     private $carts;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Orderdetail::class, mappedBy="product")
+     */
+    private $orderdetails;
+
     public function __construct()
     {
         $this->carts = new ArrayCollection();
+        $this->orderdetails = new ArrayCollection();
     }
 
     public function getName(): ?string
@@ -197,6 +203,36 @@ class Product
             // set the owning side to null (unless already changed)
             if ($cart->getProduct() === $this) {
                 $cart->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Orderdetail>
+     */
+    public function getOrderdetails(): Collection
+    {
+        return $this->orderdetails;
+    }
+
+    public function addOrderdetail(Orderdetail $orderdetail): self
+    {
+        if (!$this->orderdetails->contains($orderdetail)) {
+            $this->orderdetails[] = $orderdetail;
+            $orderdetail->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderdetail(Orderdetail $orderdetail): self
+    {
+        if ($this->orderdetails->removeElement($orderdetail)) {
+            // set the owning side to null (unless already changed)
+            if ($orderdetail->getProduct() === $this) {
+                $orderdetail->setProduct(null);
             }
         }
 

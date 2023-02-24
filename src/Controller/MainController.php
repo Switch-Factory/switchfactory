@@ -79,7 +79,7 @@ class MainController extends AbstractController
 
     public function adminPageAction(): Response
     {
-        return $this->render('admin.html.twig', []);
+        return $this->render('main/admin.html.twig', []);
     }
 
     /**
@@ -110,7 +110,7 @@ class MainController extends AbstractController
      */
     public function FunctionName(SupplierRepository $suprepo): Response
     {    $sup = $suprepo->findAll();    
-        return $this->render('aboutus.html.twig', ['supplier' => $sup]);
+        return $this->render('main/aboutus.html.twig', ['supplier' => $sup]);
     }
 
     /**
@@ -118,7 +118,7 @@ class MainController extends AbstractController
      */
     public function showAction(Product $p ,SupplierRepository $suprepo): Response
     {    $sup = $suprepo->findAll();
-        return $this->render('detail.html.twig', [
+        return $this->render('main/detail.html.twig', [
             'supplier' => $sup,
             'p' => $p
         ]);

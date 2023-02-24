@@ -51,14 +51,14 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
     }
 
-    //  /**
-    //  * @Route("/delete/{id}",name="cart_delete",requirements={"id"="\d+"})
-    //  */
-    //  public function cartDeleteAction(CartRepository $repo, Cart $c): Response
-    //  {
-    //      $repo->remove($c,true);
-    //      return $this->redirectToRoute('cart', [], Response::HTTP_SEE_OTHER);
-    //  }
+     /**
+     * @Route("/delete/{product}",name="cart_delete",requirements={"product"="\d+"})
+     */
+     public function cartDeleteAction(CartRepository $repo, Cart $c): Response
+     {
+         $repo->remove($c,true);
+         return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
+     }
 
     // /**
     //  * @Route("/", name="cart_show")
