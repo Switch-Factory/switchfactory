@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
@@ -17,89 +19,133 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class CartController extends AbstractController
 {
-      /**
+    /**
      * @Route("/add/{id}", name="cart_add")
      */
-    public function addCartAction(CartRepository $repo, ValidatorInterface $valid, Product $product, CategoryRepository $cateRepo, Request $req ): Response
-    {   
+    public function addCartAction(CartRepository $repo, Product $product, CategoryRepository $cateRepo, Request $req): Response
+    {
         $quantity = $req->query->get('quantity');
-        $BR = $brand->findAll();
-        
+        $cateRepo->findAll();
+
         $user = $this->getUser();
-        $data[]=[
-            'id'=>$user->getId()
+        $data[] = [
+            'id' => $user->getId()
         ];
-       $id = $data[0]['id'];
+        $id = $data[0]['id'];
         //check pro id exist with $userId
         $carts = $repo->findBy([
-               'product'=>$pro->getId(),
-            'user'=>$id
-             ]);
-            //  return $this->json(count($carts));
+            'product' => $product->getId(),
+            'user' => $id
+        ]);
         //if null
-        if (count($carts)==0){
-             $cart = new Cart();
-            $cart->setProduct($pro);
+        if (count($carts) == 0) {
+            $cart = new Cart();
+            $cart->setProduct($product);
             $cart->setQuantity($quantity);
-            // $cart->setbirthday(new \DateTime());
             $cart->setUser($user);
-
-        }
-       
-        else {
-            
-            $cart = $repo->find($carts[0]->getId()); // a Cart 
+        } else {
+            $cart = $repo->find($carts[0]->getId());
             $oldquantity = $cart->getQuantity();
             $newquantity = $oldquantity + $quantity;
             $cart->setquantity($newquantity);
         }
-        $repo->add($cart,true);
-        // return $this->json($cart);
-        return $this->redirectToRoute('cart', [
-            'brand' => $BR, 'pro'=>$cart
+        $repo->add($cart, true);
+        return $this->redirectToRoute('cart_show', [
+            'category' => $cateRepo, 
+            'product' => $cart
         ], Response::HTTP_SEE_OTHER);
-       
     }
+
+    // /**
+    //  * @Route("/", name="cart_show")
+    //  */
+    // public function showCartAction(CategoryRepository $cateRepo, CartRepository $repo): Response
+    // {
+    //     $user = $this->getUser();
+    //     $data[] = [
+    //         'id' => $user->getId()
+    //     ];
+    //     $id = $data[0]['id'];
+    //     $cart = $repo->carts($id);
+    //     $category = $cateRepo->findAll();
+    //     $user = $this->getUser();
+    //     $data[] = [
+    //         'id' => $user->getId()
+    //     ];
+    //     $userId = $data[0]['id'];
+    //     $product = $repo->cart($userId);
+    //     $totalAll = 0;
+    //     foreach ($product as $p) {
+    //         $totalAll += $p['total'];
+    //     }
+    //     return $this->render('cart/index.html.twig', [
+    //         'product' => $cart, 'category' => $category, 'total' => $totalAll
+    //     ]);
+    // }
+
+    //  /**
+    //  * @Route("/delete/{id}",name="cart_delete",requirements={"id"="\d+"})
+    //  */
+
+    //  public function cartDeleteAction(CartRepository $repo, Cart $c): Response
+    //  {
+    //      $repo->remove($c,true);
+    //      return $this->redirectToRoute('cart', [], Response::HTTP_SEE_OTHER);
+    //  }
+
+    // /**
+    //  * @Route("/", name="cart_show")
+    //  */
+    // public function showCartAction(): Response
+    // {
+    //     return $this->render('cart/index.html.twig', []);
+    // }
+
     /**
-     * @Route("/cart", name="cart")
+     * @Route("/", name="cart_show")
      */
-    public function cartt(CategoryRepository $brand ,CartRepository $repo): Response
+    public function showCartAction(CartRepository $repo, CategoryRepository $cateRepo, SupplierRepository $supplier): Response
     {
         $user = $this->getUser();
         $data[]=[
-            'id'=>$user->getId()
-            // 'name'=>$user->getname(),
-            // 'email'=>$user->getUsername()
+            'id' => $user->getId()
         ];
-       $id = $data[0]['id'];
-        // return $this->json($repo->cart($id));
-        $cart = $repo->cart($id);
-        $BR = $brand->findAll();
-        // $cart = $reCart->findAll();
-        $user = $this->getUser();
-        $data[]=[
-            'id'=>$user->getId()
-        ];
-        $uid = $data[0]['id'];
-$product = $repo->cart($uid);
-        $totalAll = 0;
-        foreach ($product as $p) {
-            $totalAll += $p['total'];
+        $userId = $data[0]['id'];
+        $product = $repo->showCartAction($userId);
+        $total = 0;
+        foreach ($product as $p){
+            $total += $p['total'];
         }
-       
+        $category = $cateRepo->findAll();
         return $this->render('cart/index.html.twig', [
-            'pro'=>$cart, 'brand' => $BR, 'total'=>$totalAll
+            'product' => $product,
+            'total' => $total,
+            'supplier' => $supplier
         ]);
     }
 
-    
-     /**
-     * @Route("/delete/cart/{id}",name="cart_delete",requirements={"id"="\d+"})
-     */
-    
-     public function deletecart(CartRepository $repo, Cart $c): Response
-     {
-         $repo->remove($c,true);
-         return $this->redirectToRoute('cart', [], Response::HTTP_SEE_OTHER);
-     }
+
+    // /**
+    //  * @Route("Clotheshub/Cart", name="showCart")
+    //  */
+    // public function showCart(CartRepository $repoCart, BrandRepository $reopBrand): Response
+    // {
+    //     $user = $this->getUser();
+    //     $data[]=[
+    //         'id' => $user->getId()
+    //     ];
+    //     $userid = $data[0]['id'];
+    //     $product = $repoCart->showCart($userid);
+    //     $total = 0;
+    //     foreach ($product as $p){
+    //         $total += $p['total'];
+    //     }
+    //     $brand = $reopBrand->findAll();
+    //     // return $this->json($product);
+    //     return $this->render('cart/cart.html.twig', [
+    //         'product' => $product,
+    //         'brand' => $brand,
+    //         'total' => $total
+    //     ]);
+    // }
 }

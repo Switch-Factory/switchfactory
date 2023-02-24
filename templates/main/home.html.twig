@@ -79,9 +79,9 @@
 
 						<li>
 						{% if is_granted('ROLE_ADMIN') == false %}
-							<a href="{{path("cart")}}" class="nav-link px-3 text-white">
+							{# <a href="{{path("cart")}}" class="nav-link px-3 text-white">
 								<i class="bi bi-cart3"></i>
-							</a>
+							</a> #}
 							{% endif %}
 						</li>
 					</ul>
@@ -249,9 +249,6 @@
 					</nav>
 					<!-- Navbar -->
 					
-					
-
-					
 					<!-- Products -->
 					<section>
 						<div class="text-center">
@@ -271,7 +268,7 @@
 													<h6 class="mb-3 price">{{p.price}}
 														VND</h6>
 													<button type="button" class="btn btn-light btn-outline-dark" style="tẽx">
-														<a href="{{path("cart")}}" style="text-decoration: none;color:#FF0000;">Add to cart
+														{# <a href="{{path("cart_show")}}" style="text-decoration: none;color:#FF0000;">Add to cart #}
 															<i class="bi bi-cart-plus"></i>
 														</a>
 													</button>
@@ -710,11 +707,6 @@
 					<li>
 						<a href="#">Photoshop</a>
 					</li>
-				</ul>
-				<ul class="box input-box">
-					<li>Subscribe</li>
-					<li><input type="text" placeholder="Enter your email"></li>
-					<li><input type="button" value="Subscribe"></li>
 				</ul>
 			</div>
 		</div>
