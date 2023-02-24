@@ -56,33 +56,6 @@ class CartController extends AbstractController
         ], Response::HTTP_SEE_OTHER);
     }
 
-    // /**
-    //  * @Route("/", name="cart_show")
-    //  */
-    // public function showCartAction(CategoryRepository $cateRepo, CartRepository $repo): Response
-    // {
-    //     $user = $this->getUser();
-    //     $data[] = [
-    //         'id' => $user->getId()
-    //     ];
-    //     $id = $data[0]['id'];
-    //     $cart = $repo->carts($id);
-    //     $category = $cateRepo->findAll();
-    //     $user = $this->getUser();
-    //     $data[] = [
-    //         'id' => $user->getId()
-    //     ];
-    //     $userId = $data[0]['id'];
-    //     $product = $repo->cart($userId);
-    //     $totalAll = 0;
-    //     foreach ($product as $p) {
-    //         $totalAll += $p['total'];
-    //     }
-    //     return $this->render('cart/index.html.twig', [
-    //         'product' => $cart, 'category' => $category, 'total' => $totalAll
-    //     ]);
-    // }
-
     //  /**
     //  * @Route("/delete/{id}",name="cart_delete",requirements={"id"="\d+"})
     //  */
@@ -123,29 +96,4 @@ class CartController extends AbstractController
             'supplier' => $supplier
         ]);
     }
-
-
-    // /**
-    //  * @Route("Clotheshub/Cart", name="showCart")
-    //  */
-    // public function showCart(CartRepository $repoCart, BrandRepository $reopBrand): Response
-    // {
-    //     $user = $this->getUser();
-    //     $data[]=[
-    //         'id' => $user->getId()
-    //     ];
-    //     $userid = $data[0]['id'];
-    //     $product = $repoCart->showCart($userid);
-    //     $total = 0;
-    //     foreach ($product as $p){
-    //         $total += $p['total'];
-    //     }
-    //     $brand = $reopBrand->findAll();
-    //     // return $this->json($product);
-    //     return $this->render('cart/cart.html.twig', [
-    //         'product' => $product,
-    //         'brand' => $brand,
-    //         'total' => $total
-    //     ]);
-    // }
 }
