@@ -252,6 +252,7 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 										<h5 class="card-title mb-2">{{p.name}}</h5>
 									</a>
 									<h6 class="mb-3 price">{{p.price}}VND</h6>
+									{% if is_granted('ROLE_ADMIN') == false %}
 									<form action="{{path('cartadd_formmain', {'id':p.id})}}" method="get">
 										<div class="col-lg-12 p-5" style="text-align: center;">
 											<button type="submit" class="btn btn-primary shop-button">
@@ -259,6 +260,7 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 											</button>
 										</div>
 									</form>
+									{% endif %}
 								</div>
 							</div>
 						</a>
