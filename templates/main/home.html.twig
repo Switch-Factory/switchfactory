@@ -249,7 +249,7 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 								</div>
 								<div class="card-body" style="background-color: #f5cac3;">
 									<a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
-										<h5 class="card-title mb-2"">{{p.name}}</h5>
+										<h5 class="card-title mb-2">{{p.name}}</h5>
 									</a>
 									<h6 class="mb-3 price">{{p.price}}VND</h6>
 									<form action="{{path('cartadd_formmain', {'id':p.id})}}" method="get">
