@@ -249,7 +249,7 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 								</div>
 								<div class="card-body" style="background-color: #f5cac3;">
 									<a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
-										<h5 class="card-title mb-2">{{p.name}}</h5>
+										<h5 class="card-title mb-2 homepage_name">{{p.name}}</h5>
 									</a>
 									<h6 class="mb-3 price">{{p.price}}VND</h6>
 									{% if app.user %}
@@ -273,7 +273,9 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 
 		</div>
 	</section>
-</div></main><!--Main layout-->{% endblock %}<footer class="text-center text-white mt-4" style="background-color: #607D8B"><style>
+</div></main><!--Main layout-->{% endblock %}<footer class="text-center text-white mt-4" style="background-color: #607D8B">
+
+<style>
 * {
 	margin: 0;
 	padding: 0;
@@ -347,6 +349,105 @@ img {
 	animation-name: fade;
 	animation-duration: 1.5s;
 }
+.homepage_name{
+	    margin: 6px 0 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+/*css button add to cart*/
+.home-button-add{
+	text-align: center;
+	max-width:100%;
+	min-width:100%;
+
+}
+.shop-button{
+	
+
+	background-color: #ffc8dd; 	
+	font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino';
+	border-color:#FF1493;
+	max-width:100%;
+	min-width:100%;
+	position: relative;
+
+	
+}
+.shop-button:hover{
+	background-color:#b5838d ;
+	border-color: #d6ccc2	;
+}
+
+
+
+.detail-text{
+	color:#ff006e;
+
+	font-weight:bold;
+	text-decoration:none;
+	max-width:100%;
+	min-width:100%;
+}
+.detail-text:hover{
+	color: #bcb8b1;
+	font-weight:bold;
+}
+.text-reset{
+	text-decoration: none;
+	margin: 0;
+	 
+
+
+}
+.homepage_name{
+	   	font-family: 'Droid serif', serif;
+	  	font-size:35px;
+		font-style: italic;
+		color: #CDAD00;
+		font-weight:bold;
+		text-align: center;
+		line-height: 44px;
+
+
+}
+.homepage_name:hover{
+	font-family: 'Droid serif', serif;
+	font-size:30px;
+	font-style: italic;
+	color: #ff4d6d;
+}
+.homepage-price{
+	color: #111;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size:28px;
+    font-weight: 700;
+    line-height: 48px;
+    margin: 0 0 24px;
+    padding: 0 30px;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes fade {
 	from {
@@ -404,7 +505,7 @@ footer .content {
 	padding: 30px 40px 40px;
 }
 footer .content .top {
-	display: flex;
+display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 50px;

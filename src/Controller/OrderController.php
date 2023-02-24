@@ -9,7 +9,7 @@ use App\Entity\Product;
 use App\Entity\User;
 use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
-use App\Repository\OrderDetailRepository;
+use App\Repository\OrderdetailRepository;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
@@ -30,7 +30,7 @@ class OrderController extends AbstractController
     public function checkout(CategoryRepository $cateRepo, 
     OrderRepository $orderRepo, 
     CartRepository $cartRepo, 
-    OrderDetailRepository $orderdetail, 
+    OrderdetailRepository $orderdetail, 
     ProductRepository $productRepo, 
     UserRepository $userRepo): Response
     {
@@ -43,7 +43,7 @@ class OrderController extends AbstractController
         ];
         $id = $data[0]['id'];
         $order1->setUser($userRepo);
-        $product = $cartRepo->cart($id);
+        $product = $cartRepo->showCartAction($id);
         $totalAll = 0;
         foreach ($product as $p) {
             $totalAll += $p['total'];
@@ -53,11 +53,11 @@ class OrderController extends AbstractController
         $orderRepo->add($order1, true);
 
         // insert to orderdetail
-        $oid = $orderRepo->orderdetail($id)[0]['oid'];
+        $oid = $orderRepo->orderDetail($id)[0]['oid'];
         $orderobject = $orderRepo->find($oid);
         $date = $orderRepo->date($oid);
 
-        $carts_uid = $cartRepo->findcart($id);
+        $carts_uid = $cartRepo->showCartAction($id);
 
         foreach ($carts_uid as $c) {
             $orderdetail1 = new OrderDetail();
@@ -69,7 +69,7 @@ class OrderController extends AbstractController
             $orderdetail1->setQuantity($quantity);
             $orderdetail->add($orderdetail1, true);
         }
-        $delete = $cartRepo->finduserid($id);
+        $delete = $cartRepo->findUserId($id);
         foreach ($delete as $d) {
             $idcat = $d['id'];
             $deleteproductcart = $cartRepo->find($idcat);
@@ -78,10 +78,10 @@ class OrderController extends AbstractController
 
 
         //create view
-        $userinfo = $order->userinfo($id);
-        $productdetail = $order->productdetail($oid);
+        $userinfo = $orderRepo->getUserInfo($id);
+        $productdetail = $orderdetail->productDetail($oid);
 
-        return $this->redirectToRoute('app_bill', [
+        return $this->redirectToRoute('index', [
             'category' => $category, 
             'oid' => $oid, 
             'total' => $totalAll, 
@@ -90,37 +90,35 @@ class OrderController extends AbstractController
             'date' => $date
         ], Response::HTTP_SEE_OTHER);
     }
+    // /**
+    //  * @Route("/bill", name="app_bill")`
+    //  */
+    // public function lastbill(
+    //     CategoryRepository $brand,
+    //     OrderRepository $order,
+    //     CartRepository $repo,
+    //     OrderdetailRepository $orderdetail,
+    //     ProductRepository $pro,
+    //     UserRepository $user
+    // ): Response {
 
-
-    /**
-     * @Route("/bill", name="app_bill")`
-     */
-    public function lastbill(
-        CategoryRepository $brand,
-        OrderRepository $order,
-        CartRepository $repo,
-        OrderDetailRepository $orderdetail,
-        ProductRepository $pro,
-        UserRepository $user
-    ): Response {
-
-        $BR = $brand->findAll();
-        $user = $this->getUser();
-        $data[] = [
-            'id' => $user->getId()
-        ];
-        $id = $data[0]['id'];
-        $oid = $order->orderdetail($id)[0]['oid'];
-        $userinfo = $order->userinfo($id);
-        $productdetail = $orderdetail->productdetail($oid);
-        $product = $repo->cart($id);
-        $totalAll = 0;
-        foreach ($product as $p) {
-            $totalAll += $p['total'];
-        }
-        $date = $order->date($oid);
-        return $this->render('bill/bill.html.twig', [
-            'brand' => $BR, 'oid' => $oid, 'total' => $totalAll, 'userinfo' => $userinfo, 'productdetail' => $productdetail, 'date' => $date
-        ]);
-    }
+    //     $BR = $brand->findAll();
+    //     $user = $this->getUser();
+    //     $data[] = [
+    //         'id' => $user->getId()
+    //     ];
+    //     $id = $data[0]['id'];
+    //     $oid = $order->orderdetail($id)[0]['oid'];
+    //     $userinfo = $order->userinfo($id);
+    //     $productdetail = $orderdetail->productdetail($oid);
+    //     $product = $repo->cart($id);
+    //     $totalAll = 0;
+    //     foreach ($product as $p) {
+    //         $totalAll += $p['total'];
+    //     }
+    //     $date = $order->date($oid);
+    //     return $this->render('bill/bill.html.twig', [
+    //         'brand' => $BR, 'oid' => $oid, 'total' => $totalAll, 'userinfo' => $userinfo, 'productdetail' => $productdetail, 'date' => $date
+    //     ]);
+    // }
 }

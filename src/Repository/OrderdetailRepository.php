@@ -39,28 +39,43 @@ class OrderdetailRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Orderdetail[] Returns an array of Orderdetail objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Orderdetail[] Returns an array of Orderdetail objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('o.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Orderdetail
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Orderdetail
+    //    {
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+
+            /**
+        * @return OrderDetail[] Returns an array of OrderDetail objects
+        */
+        public function productDetail($value): array
+        {
+            return $this->createQueryBuilder('o')
+                ->select('p.name, p.price, o.quantity, p.price*o.quantity as total')
+                ->innerJoin('o.product', 'p')
+                ->andWhere('o.product= :val')
+                ->setParameter('val', $value)
+                ->getQuery()
+                ->getResult()
+            ;
+        }
 }
