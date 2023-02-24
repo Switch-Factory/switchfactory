@@ -25,8 +25,6 @@ class CartController extends AbstractController
     public function addCartAction(CartRepository $repo, Product $product, CategoryRepository $cateRepo, Request $req): Response
     {
         $quantity = $req->query->get('quantity');
-        $cateRepo->findAll();
-
         $user = $this->getUser();
         $data[] = [
             'id' => $user->getId()
@@ -50,16 +48,12 @@ class CartController extends AbstractController
             $cart->setquantity($newquantity);
         }
         $repo->add($cart, true);
-        return $this->redirectToRoute('cart_show', [
-            'category' => $cateRepo, 
-            'product' => $cart
-        ], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
     }
 
     //  /**
     //  * @Route("/delete/{id}",name="cart_delete",requirements={"id"="\d+"})
     //  */
-
     //  public function cartDeleteAction(CartRepository $repo, Cart $c): Response
     //  {
     //      $repo->remove($c,true);
