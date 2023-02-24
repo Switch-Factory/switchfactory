@@ -13,13 +13,13 @@ Register
         <div
           class="card shadow-2-strong card-registration"
           style="border-radius: 15px">
-          <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">REGISTRATION</h3>
+          <div class="card-body p-4 p-md-5 bg-dark">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: White;">REGISTRATION</h3>
             {{ form_start(form) }}
               <div class="row">
                 <div class="col-md-12 mb-4">
                   <div class="form-outline">
-<label for="" class="mb-1">Full Name</label>
+<label for="" class="mb-1" style="color: white;">Full Name</label>
 					{{ form_widget(form.name) }}
                   </div>
                 </div>
@@ -28,7 +28,7 @@ Register
 <div class="row">
                 <div class="col-md-12 mb-4 pb-2">
                   <div class="form-outline">
-<label for="" class="mb-1">Email</label>
+<label for="" class="mb-1" style="color: white;">Email</label>
 					{{ form_widget(form.email) }}
                   </div>
                 </div>
@@ -36,14 +36,14 @@ Register
 
               <div class="row">
                 <div class="col-md-12 mb-4 pb-2">
-                  <div class="form-outline">
+                  <div class="form-outline" style="color:white;">
 					{{ form_widget(form.password) }}
                   </div>
                 </div>
               </div>
               <div class="row" style="margin-bottom: -25px;">
                 <div class="col-md-12 mb-4 d-flex align-items-center">
-                  <div class="form-outline datepicker w-100">
+                  <div class="form-outline datepicker w-100" style="color:white;">
                     <label for="birthdayDate" class="form-label"
                       >Birthday</label>
 					{{ form_widget(form.birthday) }}
@@ -60,6 +60,7 @@ Register
               </div>
               <div class="mt-4 pt-2" >
                 {{ form_widget(form.save) }}
+                
               </div>
              {{ form_end(form) }}
             {# </form> #}

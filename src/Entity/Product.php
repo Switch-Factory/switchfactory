@@ -56,7 +56,7 @@ class Product
     private $sup;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Cart::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="product")
      */
     private $carts;
 
@@ -185,7 +185,7 @@ class Product
     {
         if (!$this->carts->contains($cart)) {
             $this->carts[] = $cart;
-            $cart->addProduct($this);
+            $cart->setProduct($this);
         }
 
         return $this;
@@ -194,7 +194,10 @@ class Product
     public function removeCart(Cart $cart): self
     {
         if ($this->carts->removeElement($cart)) {
-            $cart->removeProduct($this);
+            // set the owning side to null (unless already changed)
+            if ($cart->getProduct() === $this) {
+                $cart->setProduct(null);
+            }
         }
 
         return $this;

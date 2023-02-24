@@ -25,19 +25,14 @@ class Cart
     private $quantity;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="cart", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
      */
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Product::class, inversedBy="carts")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="carts")
      */
     private $product;
-
-    public function __construct()
-    {
-        $this->product = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -56,38 +51,26 @@ class Cart
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, product>
-     */
-    public function getProduct(): Collection
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function addProduct(product $product): self
+    public function setProduct(?Product $product): self
     {
-        if (!$this->product->contains($product)) {
-            $this->product[] = $product;
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(product $product): self
-    {
-        $this->product->removeElement($product);
+        $this->product = $product;
 
         return $this;
     }

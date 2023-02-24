@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\SupplierRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,11 @@ class RegistrationController extends AbstractController
      * @Route("register", name="app_register")
      */
     public function registerAction(Request $req, UserPasswordHasherInterface $userPass, 
-    EntityManagerInterface $entityManager): Response
+    EntityManagerInterface $entityManager, SupplierRepository $suprepo): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
+        $sup = $suprepo->findAll();
         $form->handleRequest($req);
 
         if($form->isSubmitted()&&$form->isValid()){
@@ -41,6 +43,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'form' => $form->createView(),
+            'supplier' => $sup
         ]);
     }
 }

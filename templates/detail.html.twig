@@ -3,6 +3,53 @@
     Detail of product {{p.id}}
 {% endblock %}
 {% block body %}
+
+<section class="detailBG" class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+            <div class="col-lg-5 p-5">
+                    <div class="image_selected ms-3">
+                    {% set img = p.image %}
+                        <img  src="{{asset('uploads/'~img)}}"
+                        class="w-100" />
+                    </div>
+                </div>
+                <div class="col-lg-7 p-5">
+                    <div class="product_description">
+                        <div class="product_name">{{p.name}}</div>
+                        
+                        <div style="text-align: center;"> <span class="product_price"> {{p.price}}<span>&#8363;</span></div><br>
+    
+                        <div class="detail-font" style="text-align: center;">   
+                            <span class="product_info">Date :{{p.created|date("m/d/Y")}}<span><br> <br>
+                            <span class="product_info">In Stock :{{p.quantity}}<span> </div>
+                        
+                        <hr class="singleline">
+                        <div class="order_info d-flex flex-row">
+                            <form action="#">
+                        </div>
+                        <div class="row">
+                            <form action="#" method="get">
+                              <div class="col-lg-12 p-5" style="text-align: center;" > <button type="submit" class="btn btn-primary shop-button" >
+                              <a class="detail-text"href="cart">Add to Cart</a>
+                              </button> 
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <style>
 
 .detail-text{
@@ -113,57 +160,5 @@
   text-align: center; 
   text-transform: uppercase; 
 }
-
-
-
-
-
 </style>
-<section class="detailBG" class="h-100 h-custom" >
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-          <div class="card-body p-0">
-            <div class="row g-0">
-            <div class="col-lg-5 p-5">
-                    <div class="image_selected ms-3">
-                    {% set img = p.image %}
-                        <img  src="{{asset('uploads/'~img)}}"
-                        class="w-100" />
-                    </div>
-                </div>
-                <div class="col-lg-7 p-5">
-                    <div class="product_description">
-                        <div class="product_name">{{p.name}}</div>
-                        
-                        <div style="text-align: center;"> <span class="product_price"> {{p.price}}<span>&#8363;</span></div><br>
-    
-                        <div class="detail-font" style="text-align: center;">   
-                            <span class="product_info">Date :{{p.created|date("m/d/Y")}}<span><br> <br>
-                            <span class="product_info">In Stock :{{p.quantity}}<span> </div>
-                        
-                        <hr class="singleline">
-                        <div class="order_info d-flex flex-row">
-                            <form action="#">
-                        </div>
-                        <div class="row">
-                            <form action="#" method="get">
-                           
-                              <div class="col-lg-12 p-5" style="text-align: center;" > <button  type="submit" class="btn btn-primary shop-button" >
-                              <a class="detail-text"href="http://127.0.0.1:8000/cart">Add to Cart</a>
-                              </button> 
-                              <!-- <button type="button" class="btn btn-success shop-button">Buy Now</button> -->
-                              </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 {% endblock %}
