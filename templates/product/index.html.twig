@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{% extends 'main/admin.html.twig' %}
 {% block title %}Product Manager
 {% endblock %}
 
@@ -21,7 +21,6 @@
 								<th>Name</th>
 								<th>Price</th>
 								<th>Created</th>
-								<th>Quantity</th>
 								<th>Category</th>
 								<th>Supplier</th>
 								<th>Action</th>
@@ -34,7 +33,6 @@
 									<td>{{ p.name}}</td>
 									<td>{{ p.price}} .VND</td>
 									<td>{{ p.created|date("m/d/Y")}}</td>
-									<td>{{ p.quantity}}</td>
 									<td>{{ p.cid.name}}</td>
 									<td>{{ p.sup.name }}</td>
 									<td>

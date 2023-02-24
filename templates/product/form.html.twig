@@ -1,4 +1,4 @@
-{% extends "admin.html.twig" %}
+{% extends "main/admin.html.twig" %}
 {% block title %}
 	Admin Page - Product
 {% endblock %}
@@ -13,7 +13,7 @@
 		<div class="card">
 			<div class="card-content">
 				<div
-					class="card-body">
+					class="card-body" style ="background-color: white !important">
 					{# <form class="form form-vertical" method="POST" action="#"> #}
 					{{ form_start(form,{'attr':{'class':'form form-vertical'}}) }}
 					<div class="form-body">
@@ -36,12 +36,6 @@
 									{{ form_widget(form.created, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
 								</div>
 							</div>
-
-							<div class="col-12">
-								<div class="form-group">
-									<label for="contact-info-vertical">Quantity</label>
-									{{ form_widget(form.quantity, {'attr':{'placeholder':'0-100'}}) }}
-								</div>
 
 								<div class="col-12">
 									<div class="form-group">

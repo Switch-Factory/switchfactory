@@ -23,7 +23,6 @@ class  ProductType extends AbstractType
                 'widget' => 'single_text',
                 'required' => false
             ])
-            ->add('quantity')
             ->add('file', FileType::class, [
                 'label' => 'Product Image',
                 'required' => false,
