@@ -19,54 +19,61 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CartController extends AbstractController
+/**
+* @Route("/order")
+*/
+class OrderController extends AbstractController
 {
     /**
-     * @Route("/order")
-     */
-    public function checkout(CategoryRepository $brand, OrderRepository $order, CartRepository $repo, OrderDetailRepository $orderdetail, ProductRepository $pro, UserRepository $user): Response
+    * @Route("/", name="checkout")
+    */
+    public function checkout(CategoryRepository $cateRepo, 
+    OrderRepository $orderRepo, 
+    CartRepository $cartRepo, 
+    OrderDetailRepository $orderdetail, 
+    ProductRepository $productRepo, 
+    UserRepository $userRepo): Response
     {
         //insert  to order
-        $category = $category->findAll();
+        $category = $cateRepo->findAll();
         $order1 = new Order();
-        $user = $this->getUser();
+        $userRepo = $this->getUser();
         $data[] = [
-            'id' => $user->getId()
+            'id' => $userRepo->getId()
         ];
         $id = $data[0]['id'];
-        $order1->setUserorder($user);
-        $product = $repo->cart($id);
+        $order1->setUser($userRepo);
+        $product = $cartRepo->cart($id);
         $totalAll = 0;
         foreach ($product as $p) {
             $totalAll += $p['total'];
         }
         $order1->setTotal($totalAll);
-        $order1->setDatecreate(new \Datetime());
-        $order->add($order1, true);
+        $order1->setDate(new \Datetime());
+        $orderRepo->add($order1, true);
 
         // insert to orderdetail
-        $oid = $order->orderdetail($id)[0]['oid'];
-        $orderobject = $order->find($oid);
-        $date = $order->date($oid);
+        $oid = $orderRepo->orderdetail($id)[0]['oid'];
+        $orderobject = $orderRepo->find($oid);
+        $date = $orderRepo->date($oid);
 
-
-        $carts_uid = $repo->findcart($id);
+        $carts_uid = $cartRepo->findcart($id);
 
         foreach ($carts_uid as $c) {
             $orderdetail1 = new OrderDetail();
             $product = $c['id'];
-            $productobject = $pro->find($product);
+            $productobject = $productRepo->find($product);
             $quantity = $c['quantity'];
-            $orderdetail1->setOrderid($orderobject);
+            $orderdetail1->setOrd($orderobject);
             $orderdetail1->setProduct($productobject);
             $orderdetail1->setQuantity($quantity);
             $orderdetail->add($orderdetail1, true);
         }
-        $delete = $repo->finduserid($id);
+        $delete = $cartRepo->finduserid($id);
         foreach ($delete as $d) {
             $idcat = $d['id'];
-            $deleteproductcart = $repo->find($idcat);
-            $repo->remove($deleteproductcart, true);
+            $deleteproductcart = $cartRepo->find($idcat);
+            $cartRepo->remove($deleteproductcart, true);
         }
 
 
@@ -74,9 +81,13 @@ class CartController extends AbstractController
         $userinfo = $order->userinfo($id);
         $productdetail = $order->productdetail($oid);
 
-
         return $this->redirectToRoute('app_bill', [
-            'brand' => $BR, 'oid' => $oid, 'total' => $totalAll, 'userinfo' => $userinfo,               'productdetail' => $productdetail, 'date' => $date
+            'category' => $category, 
+            'oid' => $oid, 
+            'total' => $totalAll, 
+            'userinfo' => $userinfo,
+            'productdetail' => $productdetail, 
+            'date' => $date
         ], Response::HTTP_SEE_OTHER);
     }
 
