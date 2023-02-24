@@ -80,11 +80,14 @@ class CartController extends AbstractController
         $userId = $data[0]['id'];
         $product = $repo->showCartAction($userId);
         $total = 0;
+        $numberpro = 0;
         foreach ($product as $p){
             $total += $p['total'];
+            $numberpro += $p['quantity'];
         }
         $category = $cateRepo->findAll();
         return $this->render('cart/index.html.twig', [
+            'numpro' => $numberpro,
             'product' => $product,
             'total' => $total,
             'supplier' => $supplier
