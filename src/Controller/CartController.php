@@ -9,6 +9,7 @@ use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\SupplierRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,6 +60,26 @@ class CartController extends AbstractController
          $repo->remove($c,true);
          return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
      }
+
+    /**
+     * @Route("/edit",name="cart_edit")
+     */
+    public function cartUpdate(CartRepository $repo,Request $req): Response
+    {
+        $id = $req->query->get('id');
+        $proid = $req->query->get('proid');
+        $quantity = $req->query->get('quantity');
+        $repo->updateProInCart($id,$proid,$quantity);
+        Return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
+    }
+
+    // /**
+    //  * @Route("/", name="cart_show")
+    //  */
+    // public function showCartAction(): Response
+    // {
+    //     return $this->render('cart/index.html.twig', []);
+    // }
 
     /**
      * @Route("/", name="cart_show")
