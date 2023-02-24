@@ -26,11 +26,6 @@ class UserType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'label'=>'Signup'
-            ])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => ['label' => 'Password'],
-                'second_options' => ['label' => 'Confirm Password']
             ]);
     }
 

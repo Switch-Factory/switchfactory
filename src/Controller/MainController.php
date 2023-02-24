@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\SupplierRepository;
@@ -122,5 +123,37 @@ class MainController extends AbstractController
             'supplier' => $sup,
             'p' => $p
         ]);
+    }
+
+    /**
+     * @Route("/add/{id}", name="cart_add")
+     */
+    public function addCartAction(CartRepository $repo, Product $product, CategoryRepository $cateRepo, Request $req): Response
+    {
+        $quantity = $req->query->get('quantity');
+        $user = $this->getUser();
+        $data[] = [
+            'id' => $user->getId()
+        ];
+        $id = $data[0]['id'];
+        //check pro id exist with $userId
+        $carts = $repo->findBy([
+            'product' => $product->getId(),
+            'user' => $id
+        ]);
+        //if null
+        if (count($carts) == 0) {
+            $cart = new Cart();
+            $cart->setProduct($product);
+            $cart->setQuantity($quantity);
+            $cart->setUser($user);
+        } else {
+            $cart = $repo->find($carts[0]->getId());
+            $oldquantity = $cart->getQuantity();
+            $newquantity = $oldquantity + $quantity;
+            $cart->setquantity($newquantity);
+        }
+        $repo->add($cart, true);
+        return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
     }
 }
