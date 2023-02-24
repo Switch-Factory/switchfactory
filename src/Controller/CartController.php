@@ -60,14 +60,6 @@ class CartController extends AbstractController
          return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
      }
 
-    // /**
-    //  * @Route("/", name="cart_show")
-    //  */
-    // public function showCartAction(): Response
-    // {
-    //     return $this->render('cart/index.html.twig', []);
-    // }
-
     /**
      * @Route("/", name="cart_show")
      */
