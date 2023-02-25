@@ -20,40 +20,6 @@ class UserProfileController extends AbstractController
     {
         $this->repo = $repo;
     }
-
-        // /**
-        //  * @Route("/", name="userprofile_show")
-        //  */
-        // public function showUserprofileAction(SupplierRepository $supRepo): Response
-        // {
-        //     $user = $this->repo->findAll();
-        //     return $this->render('user_profile/index.html.twig', [
-        //         'user' => $user,
-        //         'supplier' => $supRepo
-        //     ]);
-        // }
-
-        // /**
-        //  * @Route("/edit/{user}", name="userprofile_edit",requirements={"id"="\d+"})
-        //  */
-        // public function editProfileAction(Request $req, User $user, SupplierRepository $supRepo): Response
-        // {   
-
-        //     
-
-        //     $form->handleRequest($req);
-        //     if ($form->isSubmitted() && $form->isValid()) {
-        //         $this->repo->add($user, true);
-        //         return $this->redirectToRoute('user_edit', [], Response::HTTP_SEE_OTHER);
-        //     }
-
-        //     return $this->render("user_profile/index.html.twig", [
-        //         'form' => $form->createView(), 
-        //         'user' => $user, 
-        //         'supplier' => $supRepo
-        //     ]);
-        // }
-
     /**
      * @Route("/profile", name="app_profile")
      */

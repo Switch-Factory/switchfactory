@@ -105,7 +105,7 @@ class OrderController extends AbstractController
         $id = $data[0]['id'];
         $category = $cateRepo->findAll();
         $order = $orderRepo->findAll();
-        $order1 = $orderdetail->showOrder($id);
+        $order1 = $orderdetail->showAction($id);
 
         return $this->render('order/index.html.twig', [
             'order' => $order,
