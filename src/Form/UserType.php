@@ -13,6 +13,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+use Symfony\Component\Form\Forms;
+use Symfony\Component\Validator\Validation;
 
 class UserType extends AbstractType
 {
@@ -21,15 +25,27 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('name', TextType::class)
-            ->add('birthday',DateType::class,[
+            ->add('birthday', DateType::class, [
                 'widget' => 'single_text'
             ])
             ->add('save', SubmitType::class, [
-                'label'=>'Signup'
+                'label' => 'Signup'
             ])
+            ->add('phone', TextType::class, ['attr' => ['pattern' => '[0]{1}[0-9]{9}']])
+            ->add('address')
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Password'],
+                'first_options' => [
+                    'label' => 'Password',
+                    'constraints' => [
+                        new Length([
+                            'min' => 8,
+                            'minMessage' => "Please enter a password of more than 8 characters",
+                            'max' => 20,
+                            'maxMessage' => "Please enter a password of more let 20 characters"
+                        ]),
+                    ]
+                ],
                 'second_options' => ['label' => 'Confirm Password']
             ]);
     }
@@ -39,5 +55,9 @@ class UserType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
         ]);
+        $validator = Validation::createValidator();
+        $formFactory = Forms::createFormFactoryBuilder()
+            ->addExtension(new ValidatorExtension($validator))
+            ->getFormFactory();
     }
 }

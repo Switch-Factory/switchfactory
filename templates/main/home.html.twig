@@ -78,11 +78,15 @@
 						</a>
 					{% endif %}
 				</li>
+					{% if app.user == true %}
+					{% if is_granted('ROLE_ADMIN') == false %}
 				<li>
 					<a href="{{path('order_show')}}" class="nav-link px-2 text-white ml-2 mr-2" style="color: #f2e9e4 !important">
 						<b>MANAGE RECEIPT</b>
 					</a>
 				</li>
+				{% endif %}
+				{% endif %}
 			</ul>
 			<div class="text-end">
 				{% if app.user %}

@@ -30,26 +30,32 @@
 											<div class="detail-font" style="text-align: center;">
 												<span class="product_info">Date :{{p.created|date("m/d/Y")}}<span><br>
 														<br>
-															<hr class="singleline">
+														<hr class="singleline">
 
-															<form action="{{path('cart_add', {'id':p.id})}}" method="get">
-																<div class="row">
-																	<div class="col-lg-3 mb-4" style="margin-left: 13px;">
-																		<div class="form-group">
-																			<label for="qty_label">Quantity</label>
-																			<input type="number" id="quantity" class="form-control" name="quantity" value="1">
-																		</div>
+														<form action="{{path('cart_add', {'id':p.id})}}" method="get">
+															<div class="row">
+																<div class="col-lg-3 mb-4" style="margin-left: 13px;">
+																{% if app.user %}
+																		{% if is_granted('ROLE_ADMIN') == false %}
+																	<div class="form-group">
+																		<label for="qty_label">Quantity</label>
+																		<input type="number" id="quantity" class="form-control" name="quantity" value="1">
 																	</div>
-																	<div class="col-lg-12 p-5" style="text-align: center;">
-																	
-																		<button type="submit" class="btn btn-primary shop-button">
-																			<a class="detail-text" type="submit">Add to Cart</a>
-																		</button>
-																	</div>
-
+																	{% endif %}
+																	{% endif %}
 																</div>
-															</form>
-														</div>
+																<div class="col-lg-12 p-5" style="text-align: center;">
+																	{% if app.user %}
+																		{% if is_granted('ROLE_ADMIN') == false %}
+																			<button type="submit" class="btn btn-primary shop-button">
+																				<a class="detail-text" type="submit">Add to Cart</a>
+																			</button>
+																		{% endif %}
+																	{% endif %}
+																</div>
+
+															</div>
+														</form>
 													</div>
 												</div>
 											</div>
@@ -57,113 +63,113 @@
 									</div>
 								</div>
 							</div>
-						</section>
+						</div>
+					</section>
 
-						<style>
+					<style>
 
-							.detail-text {
-								text-decoration: none;
-								color: #fff;
-							}
-							.detail-text:hover {
-								color: #FFCCFF;
+						.detail-text {
+							text-decoration: none;
+							color: #fff;
+						}
+						.detail-text:hover {
+							color: #FFCCFF;
 
-							}
-							.shop-button {
-								padding: 0.6em 2em;
-								border: none;
-								outline: none;
-								color: rgb(255, 255, 255);
-								background: #111;
-								cursor: pointer;
-								position: relative;
-								z-index: 0;
-								border-radius: 10px;
-								user-select: none;
-								-webkit-user-select: none;
-								touch-action: manipulation;
-							}
+						}
+						.shop-button {
+							padding: 0.6em 2em;
+							border: none;
+							outline: none;
+							color: rgb(255, 255, 255);
+							background: #111;
+							cursor: pointer;
+							position: relative;
+							z-index: 0;
+							border-radius: 10px;
+							user-select: none;
+							-webkit-user-select: none;
+							touch-action: manipulation;
+						}
 
-							.shop-button:before {
-								content: "";
-								background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-								position: absolute;
-								top: -2px;
-								left: -2px;
-								background-size: 400%;
-								z-index: -1;
-								filter: blur(5px);
-								-webkit-filter: blur(5px);
-								width: calc(100% + 4px);
-								height: calc(100% + 4px);
-								animation: glowing-shop-button 20s linear infinite;
-								transition: opacity 0.3s ease-in-out;
-								border-radius: 10px;
-							}
+						.shop-button:before {
+							content: "";
+							background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+							position: absolute;
+							top: -2px;
+							left: -2px;
+							background-size: 400%;
+							z-index: -1;
+							filter: blur(5px);
+							-webkit-filter: blur(5px);
+							width: calc(100% + 4px);
+							height: calc(100% + 4px);
+							animation: glowing-shop-button 20s linear infinite;
+							transition: opacity 0.3s ease-in-out;
+							border-radius: 10px;
+						}
 
-							.row{
-								justify-content:center;
-								font-family:'Palatino Linotype' ,'Book Antiqua', 'Palatino';
-							}
-							.form-control{
-								text-align:center;
-							}
-						
-						
+						.row {
+							justify-content: center;
+							font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino';
+						}
+						.form-control {
+							text-align: center;
+						}
 
-							@keyframes glowing-shop-button {
-								0% {
-									background-position: 0 0;
-								}
-								50% {
-									background-position: 400% 0;
-								}
-								100% {
-									background-position: 0 0;
-								}
-							}
 
-							.shop-button:after {
-								z-index: -1;
-								content: "";
-								position: absolute;
-								width: 100%;
-								height: 100%;
-								background: #222;
-								left: 0;
-								top: 0;
-								border-radius: 10px;
+						@keyframes glowing-shop-button {
+							0% {
+								background-position: 0 0;
 							}
-							.detailBG {
-								background-color: #d5bda;
+							50% {
+								background-position: 400% 0;
+							}
+							100% {
+								background-position: 0 0;
+							}
+						}
 
-							}
-							.image_selected {
-								box-shadow: 5px 5px 5px #666699;
-							}
-							.detail-font {
-								font-size: 20px
-							}
-							.product_name {
-								color: #b48608;
-								font-family: 'Droid serif', serif;
-								font-size: 70px;
-								font-weight: 400;
-								font-style: italic;
-								line-height: 44px;
-								margin: 10px 0 30px;
-								text-align: center;
-							}
-							.product_price {
-								color: #111;
-								font-family: 'Open Sans Condensed', sans-serif;
-								font-size: 48px;
-								font-weight: 700;
-								line-height: 48px;
-								margin: 0 0 24px;
-								padding: 0 30px;
-								text-align: center;
-								text-transform: uppercase;
-							}
-						</style>
-					{% endblock %}
+						.shop-button:after {
+							z-index: -1;
+							content: "";
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							background: #222;
+							left: 0;
+							top: 0;
+							border-radius: 10px;
+						}
+						.detailBG {
+							background-color: #d5bda;
+
+						}
+						.image_selected {
+							box-shadow: 5px 5px 5px #666699;
+						}
+						.detail-font {
+							font-size: 20px
+						}
+						.product_name {
+							color: #b48608;
+							font-family: 'Droid serif', serif;
+							font-size: 70px;
+							font-weight: 400;
+							font-style: italic;
+							line-height: 44px;
+							margin: 10px 0 30px;
+							text-align: center;
+						}
+						.product_price {
+							color: #111;
+							font-family: 'Open Sans Condensed', sans-serif;
+							font-size: 48px;
+							font-weight: 700;
+							line-height: 48px;
+							margin: 0 0 24px;
+							padding: 0 30px;
+							text-align: center;
+							text-transform: uppercase;
+						}
+					</style>
+				{% endblock %}
