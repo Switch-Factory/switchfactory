@@ -27,7 +27,7 @@ block body %}
 															{% set img = p.image %}
 															<img src="{{asset('uploads/'~img)}}" class="img-fluid rounded-3 shopcart-img" alt="Cotton T-shirt"/>
 														</div>
-														<div  class="col-md-3 col-lg-3 col-xl-2 shopcart-bigname">
+														<div  class="col-md-3 col-lg-3 col-xl-3 shopcart-bigname">
 															<h6 class="text-black mb-0 shopcart-name">{{p.name}}</h6>
 														</div>
 														<div class="col-md-3 col-lg-3 col-xl-3 d-flex">
@@ -41,12 +41,12 @@ block body %}
 														</div>
 													</form>
 
-													<div class="col-md-3 col-lg-2 col-xl-3 offset-lg-1">
+													<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
 														<h6 class="mb-0 shopcart-name">{{p.total}}. VND</h6>
 													</div>
-													<div class="col-md-1 col-lg-1 col-xl-1 text-end">
-														<a href="{{path("cart_delete",{"product":p.id}) }}" class="text-muted">
-															<i class="fas fa-times"></i>
+													<div class="col-md-1 col-lg-1 col-xl-1 text-end ">
+														<a href="{{path("cart_delete",{"product":p.id}) }}" class="text-muted button-delete ">
+															<i class="fas fa-times buttonicon-delete"></i>
 														</a>
 													</div>
 												</div>
@@ -62,25 +62,26 @@ block body %}
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-4 bg-grey">
-									<div class="p-5">
-										<h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+								<div class="col-lg-4 bg-grey ">
+									<div class="p-5 bgsum  ">
+										<h3 class="fw-bold mb-5 mt-2 pt-1 shopcar-title-h3">Summary</h3>
 										<hr class="my-4"/>
-										<div class="d-flex justify-content-between mb-4">
-											<h5 class="text-uppercase">Total items:
-												{{count}}</h5>
+										<div class=" mb-4">
+											<h5 class="text-uppercase shopcart-total">Total items<br>
+												<h12 class="shopcart-totalh12">{{count}}</h12>
+												</h5>
 										</div>
 										<hr class="my-4"/>
 
-										<div class="d-flex justify-content-between mb-5">
-											<h5 class="text-uppercase">Total price:
-												{{total}}
-												<h12>VND</h12>
+										<div class=" mb-5">
+											<h5 class="text-uppercase shopcart-total">Total price<br>
+												<h12 class="shopcart-totalh12">{{total}}
+												VND</h12>
 											</h5>
 											{# {% set totalPrice = p.count * p.price %} #}
 										</div>
-										<form action="{{path('order_cart')}}">
-											<button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
+										<form action="{{path('order_cart')}}" style="display: inline-block;">
+											<button type="submit" class="shopcart-buttonorder" data-mdb-ripple-color="dark">
 												Order
 											</button>
 										</form>
@@ -109,16 +110,16 @@ block body %}
 			.title-cart{	
 				font-family:Georgia;
 				font-weight:bold;
-				color: #dedbd2;
-				text-shadow:5px 5px 5px #000;
+				color: #4cc9f0;
+				text-shadow:5px 5px 5px #ffc6ff;
 				font-size:60px;
 				border-color: #B22222;
 			}
 			.title-cart:hover{
 				font-family:Georgia;
 				font-weight:bold;
-				color: #4cc9f0;
-				text-shadow:5px 5px 5px #ffc6ff;
+				color: #dedbd2;
+				text-shadow:5px 5px 5px #000;
 				font-size:60px;
 				border-color: #B22222;
 			}
@@ -128,7 +129,7 @@ block body %}
 			} */
 			.shopcart-name{
 				font-family:'Palatino Linotype', 'Book Antiqua' ,'Palatino';
-				font-size:15px;
+				font-size:16px;
 				font-weight:bold;
 			}
 			.shopcart-value{
@@ -171,6 +172,16 @@ block body %}
 			.bi:hover{
 				font-size: 20px;
 				color:#fff;
+			}
+			.bgsum{
+				border-radius:60px
+				
+			}
+
+
+
+			.shopcart-bgSumary{
+				background:red;
 			}
 			
 
@@ -217,6 +228,134 @@ block body %}
 				background: var(--color);
 				color: #fff;
 				}
+
+				.button-delete{
+					font-size:50px;
+				}
+
+				.buttonicon-delete{
+					color: #ffb3c6;
+					text-shadow: 5px 5px 5px #000;
+					border-color: #ffb703;
+				}
+				.buttonicon-delete:hover{
+					color: #FF0000;
+;
+					text-shadow: 5px 5px 5px #000;
+					border-color: #ffb703;
+				}
+
+				.bg-grey{
+					background-color:#e2eafc;
+					border-radius:5px;
+				}
+
+
+				.shopcar-title-h3{
+					font-family:Georgia;
+				font-weight:bold;
+				color: #dedbd2	;
+				text-shadow:5px 5px 5px #000;
+				font-size:40px;
+				border-color: #B22222;
+				}
+				.shopcar-title-h3:hover{
+					font-family:Georgia;
+				font-weight:bold;
+				color: #4cc9f0	;
+				text-shadow:5px 5px 5px #ffc6ff;
+				font-size:40px;
+				border-color: #B22222;
+				}
+
+				.text-uppercase{
+					font-family:'Palatino Linotype', 'Book Antiqua' ,'Palatino';
+				font-size:25px;
+				font-weight:bold;
+				}
+				.shopcart-total{
+					justify-content:center
+				}
+				.shopcart-totalh12{
+				color:#FF3300;
+				text-shadow: 1px 1px 1px #000;
+				font-family: 'Original Surfer', 'cursive'; 
+				font-size: 30	px; 
+				line-height: 28px; 
+				margin: 0 0 24px;
+					 /* font-size: 26px; font-weight: 300; color: #ff3300; margin: 0 0 24px; */
+				}
+
+
+/* CSS */
+.shopcart-buttonorder {
+
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  font-weight:bold;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.shopcart-buttonorder::after,
+.shopcart-buttonorder::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.shopcart-buttonorder::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.shopcart-buttonorder::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.shopcart-buttonorder:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.shopcart-buttonorder:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.shopcart-buttonorder:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
 
 
 			/* .text-body{
@@ -270,7 +409,6 @@ cursor:pointer;
   align-items:center;
 } */
 
-
 	
 
 
@@ -296,9 +434,6 @@ cursor:pointer;
 			top: 13px;
 		}
 
-		.bg-grey {
-			background-color: #eae8e8;
-		}
 
 		@media(min-width: 992px) {
 			.card-registration-2 .bg-grey {
