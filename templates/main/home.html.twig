@@ -84,8 +84,10 @@
 
 			<div class="text-end">
 				{% if app.user %}
+				<a href="{{path('userchange')}}"> 
 					<h1 class="btn btn-outline-light me-2 mt-2">Welcome,
 						{{app.user.name}}</h1>
+						</a>
 					<button onclick="location.href='http://127.0.0.1:8000/logout'" type="button" class="btn btn-outline-light me-2">Logout</button>
 				{% else %}
 					<button onclick="location.href='http://127.0.0.1:8000/login'" type="button" class="btn btn-outline-light me-2">Login</button>

@@ -19,4 +19,14 @@ class UserProfileController extends AbstractController
             'supplier' => $sup
         ]);
     }
+
+    /**
+     * @Route("/userp", name="userchange")
+     */
+    public function userProfilechange(SupplierRepository $sup): Response
+    {
+        return $this->render('user_profile/index.html.twig', [
+            'supplier' => $sup
+        ]);
+    }
 }
