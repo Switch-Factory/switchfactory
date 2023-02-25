@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Cart;
 use App\Entity\Product;
+use App\Entity\User;
+use App\Form\EditUserType;
 use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\SupplierRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +40,10 @@ class MainController extends AbstractController
     /**
      * @Route("/index", name="index")
      */
-    public function showProductsByCategory(CategoryRepository $catrepo,SupplierRepository $suprepo, ProductRepository $productRepository, Request $request)
+    public function showProductsByCategory(CategoryRepository $catrepo,
+    SupplierRepository $suprepo, 
+    ProductRepository $productRepository,
+    Request $request)
     {
         if ($request->query->has('name')) {
             $name = $request->query->get('name');
@@ -50,7 +56,7 @@ class MainController extends AbstractController
                 'products' => $products,
                 'supplier' => $sup
             ]);
-        } 
+        }
         elseif ($request->query->has('suppname')){
             $name = $request->query->get('suppname');
             $sup = $suprepo->findAll();
@@ -69,11 +75,12 @@ class MainController extends AbstractController
             $cat = $catrepo->findAll();
             $sup = $suprepo->findAll();
             return $this->render('main/home.html.twig', [
-                'products' => $products, 'category' => $cat , 'supplier' => $sup
+                'products' => $products, 
+                'category' => $cat , 
+                'supplier' => $sup
             ]);
         }
     }
-
 
     /**
      * @Route("/admin", name="adminPage")
@@ -83,29 +90,6 @@ class MainController extends AbstractController
     {
         return $this->render('main/admin.html.twig', []);
     }
-
-    /**
-     * @Route("/homepage", name="homepage")
-     */
-    public function homepageAction(): Response
-    {
-        return $this->render('main/home.html.twig', [
-            'controller_name' => 'MainController'
-        ]);
-    }
-
-    // /**
-    //  * @Route("/cart", name="cart")
-    //  */
-    // public function cartAction(SupplierRepository $suprepo): Response
-    // {   
-    //     $sup = $suprepo->findAll();
-    //     return $this->render('cart.html.twig', [
-    //         'supplier' => $sup,
-    //         'controller_name' => 'MainController'
-            
-    //     ]);
-    // }
 
     /**
      * @Route("/aboutus", name="aboutus")

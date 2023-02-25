@@ -12,6 +12,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\OrderdetailRepository;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
+use App\Repository\SupplierRepository;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Schema\Exception\ForeignKeyDoesNotExist;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,15 +20,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
-* @Route("/order")
-*/
 class OrderController extends AbstractController
 {
     /**
-    * @Route("/", name="checkout")
+    * @Route("/order/purchase", name="order_cart")
     */
-    public function checkout(CategoryRepository $cateRepo, 
+    public function orderCartAction(CategoryRepository $cateRepo, 
     OrderRepository $orderRepo, 
     CartRepository $cartRepo, 
     OrderdetailRepository $orderdetail, 
@@ -90,35 +88,37 @@ class OrderController extends AbstractController
             'date' => $date
         ], Response::HTTP_SEE_OTHER);
     }
-    // /**
-    //  * @Route("/bill", name="app_bill")`
-    //  */
-    // public function lastbill(
-    //     CategoryRepository $brand,
-    //     OrderRepository $order,
-    //     CartRepository $repo,
-    //     OrderdetailRepository $orderdetail,
-    //     ProductRepository $pro,
-    //     UserRepository $user
-    // ): Response {
 
-    //     $BR = $brand->findAll();
-    //     $user = $this->getUser();
-    //     $data[] = [
-    //         'id' => $user->getId()
-    //     ];
-    //     $id = $data[0]['id'];
-    //     $oid = $order->orderdetail($id)[0]['oid'];
-    //     $userinfo = $order->userinfo($id);
-    //     $productdetail = $orderdetail->productdetail($oid);
-    //     $product = $repo->cart($id);
-    //     $totalAll = 0;
-    //     foreach ($product as $p) {
-    //         $totalAll += $p['total'];
-    //     }
-    //     $date = $order->date($oid);
-    //     return $this->render('bill/bill.html.twig', [
-    //         'brand' => $BR, 'oid' => $oid, 'total' => $totalAll, 'userinfo' => $userinfo, 'productdetail' => $productdetail, 'date' => $date
-    //     ]);
-    // }
+    /**
+     * @Route("/order/receipt", name="order_receipt")`
+     */
+    public function showReceiptAction(
+        CategoryRepository $cateRepo,
+        OrderRepository $orderRepo,
+        CartRepository $cartRepo,
+        OrderdetailRepository $orderdetail,
+        UserRepository $userRepo
+    ): Response {
+
+        $category = $cateRepo->findAll();
+        $userRepo = $this->getUser();
+        $data[] = [
+            'id' => $userRepo->getId()
+        ];
+
+        $id = $data[0]['id'];
+        $oid = $orderRepo->orderdetail($id)[0]['oid'];
+        $userInfo = $orderRepo->userinfo($id);
+        $productdetail = $orderdetail->productdetail($oid);
+        $product = $cartRepo->cart($id);
+        $totalAll = 0;
+
+        foreach ($product as $p) {
+            $totalAll += $p['total'];
+        }
+        $date = $orderRepo->date($oid);
+        return $this->render('order/index.html.twig', [
+            'category' => $category, 'oid' => $oid, 'total' => $totalAll, 'userinfo' => $userInfo, 'productdetail' => $productdetail, 'date' => $date
+        ]);
+    }
 }
