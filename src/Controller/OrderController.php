@@ -90,35 +90,28 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/order/receipt", name="order_receipt")`
+     * @Route("/order", name="order_show")
      */
-    public function showReceiptAction(
-        CategoryRepository $cateRepo,
-        OrderRepository $orderRepo,
-        CartRepository $cartRepo,
-        OrderdetailRepository $orderdetail,
-        UserRepository $userRepo
-    ): Response {
-
-        $category = $cateRepo->findAll();
+    public function showOrderDetailAction(OrderRepository $orderRepo, 
+    CategoryRepository $cateRepo, 
+    OrderdetailRepository $orderdetail,
+    UserRepository $userRepo,
+    SupplierRepository $supRepo): Response
+    {
         $userRepo = $this->getUser();
         $data[] = [
             'id' => $userRepo->getId()
         ];
-
         $id = $data[0]['id'];
-        $oid = $orderRepo->orderdetail($id)[0]['oid'];
-        $userInfo = $orderRepo->userinfo($id);
-        $productdetail = $orderdetail->productdetail($oid);
-        $product = $cartRepo->cart($id);
-        $totalAll = 0;
+        $category = $cateRepo->findAll();
+        $order = $orderRepo->findAll();
+        $order1 = $orderdetail->showOrder($id);
 
-        foreach ($product as $p) {
-            $totalAll += $p['total'];
-        }
-        $date = $orderRepo->date($oid);
         return $this->render('order/index.html.twig', [
-            'category' => $category, 'oid' => $oid, 'total' => $totalAll, 'userinfo' => $userInfo, 'productdetail' => $productdetail, 'date' => $date
+            'order' => $order,
+            'category' => $cateRepo,
+            'od' => $order1,
+            'supplier' => $supRepo
         ]);
     }
 }

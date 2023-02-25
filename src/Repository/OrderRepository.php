@@ -86,22 +86,32 @@ class OrderRepository extends ServiceEntityRepository
     }
 
     /**
-        * @return Order[] Returns an array of Order objects
-        */
-        public function getUserInfo($value): array
-        {
-         return $this->createQueryBuilder('o')
-         ->select('u.name, u.email')
-         ->innerJoin('o.user', 'u')
-         ->andWhere('o.user = :val')
-         ->setParameter('val', $value)
-         ->orderBy('o.id', 'DESC')
-         ->setMaxResults(1)
-         ->getQuery()
-         ->getResult()
-         ;
-        }
+     * @return Order[] Returns an array of Order objects
+     */
+    public function getUserInfo($value): array
+    {
+        return $this->createQueryBuilder('o')
+            ->select('u.name, u.email')
+            ->innerJoin('o.user', 'u')
+            ->andWhere('o.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('o.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
 
-
-
+    /**
+     * @return Order[] Returns an array of Order objects
+     */
+    public function showOrderByUserId($value): array
+    {
+        return $this->createQueryBuilder('o')
+            ->select('o.id, o.total, o.date')
+            ->andWhere('o.user = :id')
+            ->setParameter('id', $value)
+            ->orderBy('o.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }     
 }
