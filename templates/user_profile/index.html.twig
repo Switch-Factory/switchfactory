@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
 	<div class="container-xl px-4 mt-4">
 		<hr class="mt-0 mb-4">
 				<!-- Account details card-->
@@ -37,74 +38,106 @@
 								<div class="md-3">
 									<label class="small mb-1" for="inputBirthday">Birthday</label>
 									<input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+=======
+	<div classname="page-heading pb-2 mt-4 mb-2 ">
+		<h3>Profile Edit</h3>
+		<a href="{{path('index')}}">
+			<button type="button" class="btn btn-outline-primary">Back to index</button>
+		</a>
+	</div>
+	<div class="page-content mt-4">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-body">
+					{{ form_start(form,{'attr':{'class':'form form-vertical'}}) }}
+					<div class="form-body">
+						<div class="row">
+							<div class="col-12">
+								<div class="form-group">
+									<label for="first-name-vertical">User Name</label>
+									{{ form_widget(form.name, {'attr':{'placeholder':'User Name'}}) }}
 								</div>
 							</div>
-							<!-- Save changes button-->
-							<button class="btn btn-primary" type="button">Save changes</button>
-						</form>
+
+							<div class="col-12">
+								<div class="form-group">
+									<label for="contact-info-vertical">Email</label>
+									{{ form_widget(form.email, {'attr':{'placeholder':'Email'}}) }}
+								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+									<label for="first-name-vertical">Birthday</label>
+									{{ form_widget(form.birthday, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
+>>>>>>> 7050d272d29127ef852c078ec6cad4bc237acbde
+								</div>
+							</div>
+							<div class="col-12 d-flex justify-content-end pt-2">
+								{{ form_widget(form.save,{'attr':{'class':'btn btn-primary me-2'}}) }}
+								<button type="reset" class="btn btn-secondary">Reset</button>
+							</div>
+						</div>
 					</div>
+					{{ form_end(form) }}
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><style>
+body {
+	background-color: #f2f6fc;
+	color: #69707a;
+}
+.img-account-profile {
+	height: 10rem;
+}
+.rounded-circle {
+	border-radius: 50% !important;
+}
+.card {
+	box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+	font-weight: 500;
+}
+.card-header:first-child {
+	border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+	padding: 1rem 1.35rem;
+	margin-bottom: 0;
+	background-color: rgba(33, 40, 50, 0.03);
+	border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control,
+.dataTable-input {
+	display: block;
+	width: 100%;
+	padding: 0.875rem 1.125rem;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1;
+	color: #69707a;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #c5ccd6;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 0.35rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
-	<style>
-		body {
-			background-color: #f2f6fc;
-			color: #69707a;
-		}
-		.img-account-profile {
-			height: 10rem;
-		}
-		.rounded-circle {
-			border-radius: 50% !important;
-		}
-		.card {
-			box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
-		}
-		.card .card-header {
-			font-weight: 500;
-		}
-		.card-header:first-child {
-			border-radius: 0.35rem 0.35rem 0 0;
-		}
-		.card-header {
-			padding: 1rem 1.35rem;
-			margin-bottom: 0;
-			background-color: rgba(33, 40, 50, 0.03);
-			border-bottom: 1px solid rgba(33, 40, 50, 0.125);
-		}
-		.form-control,
-		.dataTable-input {
-			display: block;
-			width: 100%;
-			padding: 0.875rem 1.125rem;
-			font-size: 0.875rem;
-			font-weight: 400;
-			line-height: 1;
-			color: #69707a;
-			background-color: #fff;
-			background-clip: padding-box;
-			border: 1px solid #c5ccd6;
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			appearance: none;
-			border-radius: 0.35rem;
-			transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-		}
-
-		.nav-borders .nav-link.active {
-			color: #0061f2;
-			border-bottom-color: #0061f2;
-		}
-		.nav-borders .nav-link {
-			color: #69707a;
-			border-bottom-width: 0.125rem;
-			border-bottom-style: solid;
-			border-bottom-color: transparent;
-			padding: 0.5rem 0;
-			margin-left: 1rem;
-			margin-right: 1rem;
-		}
-	</style>
-{% endblock %}
+.nav-borders .nav-link.active {
+	color: #0061f2;
+	border-bottom-color: #0061f2;
+}
+.nav-borders .nav-link {
+	color: #69707a;
+	border-bottom-width: 0.125rem;
+	border-bottom-style: solid;
+	border-bottom-color: transparent;
+	padding: 0.5rem 0;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}</style>{% endblock %}

@@ -31,11 +31,7 @@
 		<header class="p-3 bg-dark text-white" style="background-color: #22223b !important;">
 			<div class="container">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-					<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-						<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-							<use xlink:href="#bootstrap"></use>
-						</svg>
-					</a>
+
 
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 						<li>
@@ -81,13 +77,20 @@
 					{% endif %}
 				</li>
 			</ul>
-
 			<div class="text-end">
 				{% if app.user %}
+<<<<<<< HEAD
 				<a href="{{path('userchange')}}"> 
 					<h1 class="btn btn-outline-light me-2 mt-2">Welcome,
 						{{app.user.name}}</h1>
 						</a>
+=======
+					<a href="{{path('userprofile_edit',{'id':app.user.id})}}">
+						<h1 class="btn btn-outline-light me-2 mt-2">Welcome,
+						{{app.user.name}}</h1>
+					</a>
+
+>>>>>>> 7050d272d29127ef852c078ec6cad4bc237acbde
 					<button onclick="location.href='http://127.0.0.1:8000/logout'" type="button" class="btn btn-outline-light me-2">Logout</button>
 				{% else %}
 					<button onclick="location.href='http://127.0.0.1:8000/login'" type="button" class="btn btn-outline-light me-2">Login</button>
@@ -253,7 +256,8 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 									<a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
 										<h5 class="card-title mb-2 homepage_name">{{p.name}}</h5>
 									</a>
-									<h6 class="homepage-price" class="mb-3 price">{{p.price}}<span>&#8363;</span></h6>
+									<h6 class="homepage-price" class="mb-3 price">{{p.price}}<span>&#8363;</span>
+									</h6>
 									{% if app.user %}
 										{% if is_granted('ROLE_ADMIN') == false %}
 											<form action="{{path('cartadd_formmain', {'id':p.id})}}" method="get">
@@ -275,9 +279,7 @@ setTimeout(showSlides, 1500); // Change image every 2 seconds
 
 		</div>
 	</section>
-</div></main><!--Main layout-->{% endblock %}<footer class="text-center text-white mt-4" style="background-color: #607D8B">
-
-<style>
+</div></main><!--Main layout-->{% endblock %}<footer class="text-center text-white mt-4" style="background-color: #607D8B"><style>
 * {
 	margin: 0;
 	padding: 0;
@@ -351,188 +353,158 @@ img {
 	animation-name: fade;
 	animation-duration: 1.5s;
 }
-.homepage_name{
-	    margin: 6px 0 20px;
+.homepage_name {
+	margin: 6px 0 20px;
 
 }
-
-
-
-
-
-
-
-
 
 
 /*css button add to cart*/
-.home-button-add{
+.home-button-add {
 	text-align: center;
-	max-width:100%;
-	min-width:100%;
+	max-width: 100%;
+	min-width: 100%;
 
 }
-.shop-button{
-	
+.shop-button {
 
-	background-color: #ffc8dd; 	
+
+	background-color: #ffc8dd;
 	font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino';
-	border-color:#FF1493;
-	max-width:100%;
-	min-width:100%;
+	border-color: #FF1493;
+	max-width: 100%;
+	min-width: 100%;
 	position: relative;
 
-	
+
 }
-.shop-button:hover{
-	background-color:#b5838d ;
-	border-color: #d6ccc2	;
+.shop-button:hover {
+	background-color: #b5838d;
+	border-color: #d6ccc2;
 }
 
 
+.detail-text {
+	color: #ff006e;
 
-.detail-text{
-	color:#ff006e;
-
-	font-weight:bold;
-	text-decoration:none;
-	max-width:100%;
-	min-width:100%;
+	font-weight: bold;
+	text-decoration: none;
+	max-width: 100%;
+	min-width: 100%;
 }
-.detail-text:hover{
+.detail-text:hover {
 	color: #bcb8b1;
-	font-weight:bold;
+	font-weight: bold;
 }
-.text-reset{
+.text-reset {
 	text-decoration: none;
 	margin: 0;
-	 
 
 
 }
-.homepage_name{
-	   	font-family: 'Droid serif', serif;
-	  	font-size:35px;
-		font-style: italic;
-		color: #CDAD00;
-		font-weight:bold;
-		text-align: center;
-		line-height: 44px;
-
-
-}
-.homepage_name:hover{
+.homepage_name {
 	font-family: 'Droid serif', serif;
-	font-size:30px;
+	font-size: 35px;
+	font-style: italic;
+	color: #CDAD00;
+	font-weight: bold;
+	text-align: center;
+	line-height: 44px;
+
+
+}
+.homepage_name:hover {
+	font-family: 'Droid serif', serif;
+	font-size: 30px;
 	font-style: italic;
 	color: #ff4d6d;
 }
-.homepage-price{
+.homepage-price {
 	color: #111;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size:28px;
-    font-weight: 700;
-    line-height: 48px;
-    margin: 0 0 24px;
-    padding: 0 30px;
-    text-align: center;
-    text-transform: uppercase;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 48px;
+	margin: 0 0 24px;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /*css button add to cart*/
-.home-button-add{
+.home-button-add {
 	text-align: center;
-	max-width:100%;
-	min-width:100%;
+	max-width: 100%;
+	min-width: 100%;
 
 }
-.shop-button{
-	
+.shop-button {
 
-	background-color: #ffc8dd; 	
+
+	background-color: #ffc8dd;
 	font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino';
-	border-color:#FF1493;
-	max-width:100%;
-	min-width:100%;
+	border-color: #FF1493;
+	max-width: 100%;
+	min-width: 100%;
 	position: relative;
 
-	
+
 }
-.shop-button:hover{
-	background-color:#b5838d ;
-	border-color: #d6ccc2	;
+.shop-button:hover {
+	background-color: #b5838d;
+	border-color: #d6ccc2;
 }
 
 
+.detail-text {
+	color: #ff006e;
 
-.detail-text{
-	color:#ff006e;
-
-	font-weight:bold;
-	text-decoration:none;
-	max-width:100%;
-	min-width:100%;
+	font-weight: bold;
+	text-decoration: none;
+	max-width: 100%;
+	min-width: 100%;
 }
-.detail-text:hover{
+.detail-text:hover {
 	color: #bcb8b1;
-	font-weight:bold;
+	font-weight: bold;
 }
-.text-reset{
+.text-reset {
 	text-decoration: none;
 	margin: 0;
-	 
 
 
 }
-.homepage_name{
-	   	font-family: 'Droid serif', serif;
-	  	font-size:35px;
-		font-style: italic;
-		color: #CDAD00;
-		font-weight:bold;
-		text-align: center;
-		line-height: 44px;
-
-
-}
-.homepage_name:hover{
+.homepage_name {
 	font-family: 'Droid serif', serif;
-	font-size:30px;
+	font-size: 35px;
+	font-style: italic;
+	color: #CDAD00;
+	font-weight: bold;
+	text-align: center;
+	line-height: 44px;
+
+
+}
+.homepage_name:hover {
+	font-family: 'Droid serif', serif;
+	font-size: 30px;
 	font-style: italic;
 	color: #ff4d6d;
 }
-.homepage-price{
+.homepage-price {
 	color: #111;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size:28px;
-    font-weight: 700;
-    line-height: 48px;
-    margin: 0 0 24px;
-    padding: 0 30px;
-    text-align: center;
-    text-transform: uppercase;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 48px;
+	margin: 0 0 24px;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
 
 }
-
-
-
-
-
-
-
-
 
 
 @keyframes fade {
@@ -591,7 +563,7 @@ footer .content {
 	padding: 30px 40px 40px;
 }
 footer .content .top {
-display: flex;
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 50px;
