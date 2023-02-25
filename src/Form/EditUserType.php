@@ -24,7 +24,7 @@ class EditUserType extends AbstractType
         ->add('phone', TextType::class )
         ->add('address', TextType::class)
         ->add('birthday',DateType::class,['widget' => 'single_text'])
-        ->add('save', SubmitType::class, ['label'=>'Signup']);
+        ->add('save', SubmitType::class, ['label'=>'Change']);
     }
 
     // public function configureOptions(OptionsResolver $resolver):void

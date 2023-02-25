@@ -4,17 +4,23 @@
 {% endblock %}
 
 {% block body %}
-	<div classname="page-heading pb-2 mt-4 mb-2 ">
-		<h3>Profile Edit</h3>
-		<a href="{{path('index')}}">
-			<button type="button" class="btn btn-outline-primary">Back to index</button>
+	<div classname="page-heading pb-2 mt-4 mb-2 profileHEader ">
+		<h3 class="profile-HEaeder" >Wellcome to Management</h3>
+		<a href="{{path('index')}}" calss="profileA" style="justify-conntent:center;justify-content: center;display: flex; text-decoration:none;" >
+			<button type="button" class="fas fa-long-arrow-alt-left me-2 profileButton">Back to index</button>
 		</a>
 	</div>
-<div class="container-xl px-4 mt-4">
-		<hr class="mt-0 mb-4">
+<div class="  justify-content-center align-items-center container-xl px-4 mt-4" style="background-color:#d5bdaf; display:flex" >
+
+	<div class="row d-flex justify-content-center align-items-center   col-md-8 col-lg-6 col-xl-5">
+
+		<hr class=" mt-0 mb-4">
 				<!-- Account details card-->
-				<div class="card mb-4">
-					<div class="card-header">Account Details</div>
+				<div class="card mb-4 profile-bgr">
+
+
+
+					<div class="header profile-title">Account Details</div>
 					<div class="card-body">
 						{# <form> #}
 						{{ form_start(form) }}
@@ -52,14 +58,16 @@
 								</div>
 							</div>
 							<!-- Save changes button-->
-							{{ form_widget(form.save) }}
+							{{ form_widget(form.save,{'attr':{'class':' profile-buttonChange '}}) }}
 						{# </form> #}
 						{{ form_end(form) }}
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 	<style>
 		body {
 			background-color: #f2f6fc;
@@ -73,6 +81,7 @@
 		}
 		.card {
 			box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+			border-radius:15px;
 		}
 		.card .card-header {
 			font-weight: 500;
@@ -117,5 +126,189 @@
 			margin-left: 1rem;
 			margin-right: 1rem;
 		}
+
+
+		
+		.profile-bgr{
+			color:#fff;	
+			    border-radius: 15px;
+				background-color:#000;
+			box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+
+		}
+
+
+
+		.profile-title{
+			color: #EE3A8C; 
+			font-family: 'Trocchi', serif; 
+			font-size: 60px; 
+			font-weight: bold; 
+			line-height: 48px; 
+			margin: 20px 5px 5px 5px;
+			text-shadow: 5px 5px 5px #fff;
+
+		}
+		.profile-title:hover{
+			color: #d7e3fc; 
+			font-family: 'Trocchi', serif; 
+			font-size: 60px; 
+			font-weight: bold; 
+			line-height: 48px; 
+			margin: 20px 5px 5px 5px;
+			text-shadow: 5px 5px 5px #efcfe3;
+		}
+		
+
+
+				/* CSS */
+				.profile-buttonChange {
+    margin: 16px 5px 10px 170px;
+    					justify-content: center;
+    					width: 10pc;
+    					position: relative;
+				padding: 0.6em 2em;
+				border: none;
+				outline: none;
+				color: rgb(238 48 167);
+				background: #111;
+				cursor: pointer;
+				position: relative;
+				z-index: 0;
+				border-radius: 10px;
+				user-select: none;
+				-webkit-user-select: none;
+				touch-action: manipulation;
+				}
+
+				.profile-buttonChange:before {
+				content: "";
+				background: linear-gradient(
+					45deg,
+					#ff0000,
+					#ff7300,
+					#fffb00,
+					#48ff00,
+					#00ffd5,
+					#002bff,
+					#7a00ff,
+					#ff00c8,
+					#ff0000
+				);
+				position: absolute;
+				top: -2px;
+				left: -2px;
+				background-size: 400%;
+				z-index: -1;
+				filter: blur(5px);
+				-webkit-filter: blur(5px);
+				width: calc(100% + 4px);
+				height: calc(100% + 4px);
+				animation: glowing-profile-buttonChange 20s linear infinite;
+				transition: opacity 0.3s ease-in-out;
+				border-radius: 10px;
+				}
+
+				@keyframes glowing-profile-buttonChange {
+				0% {
+					background-position: 0 0;
+				}
+				50% {
+					background-position: 400% 0;
+				}
+				100% {
+					background-position: 0 0;
+				}
+				}
+
+				.profile-buttonChange:after {
+				z-index: -1;
+				content: "";
+			
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: #222;
+				left: 0;
+				top: 0;
+				border-radius: 10px;
+				}
+				.profile-buttonChange:hover{
+					color:#DDC488;
+				}
+				.profileHEader{
+					    color: #CEF0D4;
+						font-family: 'Rouge Script', cursive;
+						font-size: 60px;
+						font-weight: normal;
+						line-height: 48px;
+						margin: 0 0 50px;
+						text-align: center;
+						text-shadow: 1px 1px 2px #082b34;
+				}
+				.profile-HEaeder{
+					color: #fc2f00;
+					font-family: 'Rouge Script', cursive;
+					font-size: 90px;
+					font-weight: normal;
+					line-height: 48px;
+					margin: 50px 0 50px;
+					text-align: center;
+					text-shadow: 5px 5px 2px #082b34;
+				}
+
+				.profile-HEaeder:hover{
+					color: #00FFFF;
+					font-family: 'Rouge Script', cursive;
+					font-size: 60px;
+					font-weight: normal;
+					line-height: 48px;
+						margin: 50px 0 50px;
+					text-align: center;
+					text-shadow: 5px 1px 2px #082b34;
+				}
+
+					
+
+
+					/* CSS */
+					.profileButton {
+					--b: 3px;   
+					--s: .45em; 
+					--color: #373B44;
+					
+					padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+					color: var(--color);
+					--_p: var(--s);
+					background:
+						conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+						var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+					transition: .3s linear, color 0s, background-color 0s;
+					outline: var(--b) solid #0000;
+					outline-offset: .6em;
+					font-size: 16px;
+
+					border: 0;
+
+					user-select: none;
+					-webkit-user-select: none;
+					touch-action: manipulation;
+					}
+
+					.profileButton:hover,
+					.profileButton:focus-visible{
+					--_p: 0px;
+					outline-color: var(--color);
+					outline-offset: .05em;
+					}
+
+					.profileButton:active {
+					background: var(--color);
+					color: #fff;
+					}
+				
+
+
+
 	</style>
 {% endblock %}
