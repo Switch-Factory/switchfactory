@@ -64,18 +64,33 @@ class OrderdetailRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-            /**
-        * @return OrderDetail[] Returns an array of OrderDetail objects
-        */
-        public function productDetail($value): array
-        {
-            return $this->createQueryBuilder('o')
-                ->select('p.name, p.price, o.quantity, p.price*o.quantity as total')
-                ->innerJoin('o.product', 'p')
-                ->andWhere('o.product= :val')
-                ->setParameter('val', $value)
-                ->getQuery()
-                ->getResult()
-            ;
-        }
+    /**
+     * @return OrderDetail[] Returns an array of OrderDetail objects
+     */
+    public function productDetail($value): array
+    {
+        return $this->createQueryBuilder('o')
+            ->select('p.name, p.price, o.quantity, p.price*o.quantity as total')
+            ->innerJoin('o.product', 'p')
+            ->andWhere('o.product= :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return OrderDetail[] Returns an array of OrderDetail objects
+     */
+    public function showAction($value): array
+    {
+        return $this->createQueryBuilder('od')
+            ->select('od.id, p.name, p.price, 
+            od.quantity, o.total, o.date')
+            ->innerJoin('od.product', 'p')
+            ->innerJoin('od.ord', 'o')
+            ->andWhere('o.user= :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
 }

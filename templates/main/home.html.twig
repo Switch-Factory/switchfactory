@@ -55,6 +55,7 @@
 						</li>
 					</a>
 				</li>
+				
 				<li>
 					<a href="{{path('aboutus')}}" class="nav-link px-2 text-white ml-2 mr-2" style="color: #f2e9e4 !important">
 						<b>ABOUT US</b>
@@ -77,12 +78,15 @@
 						</a>
 					{% endif %}
 				</li>
+				<li>
+					<a href="{{path('order_show')}}" class="nav-link px-2 text-white ml-2 mr-2" style="color: #f2e9e4 !important">
+						<b>MANAGE RECEIPT</b>
+					</a>
+				</li>
 			</ul>
 			<div class="text-end">
 				{% if app.user %}
 					<a href="{{path('app_profile',{'id':app.user.id})}}">
-					{# href="{{path('userprofile_edit',{'id':app.user.id})}}" >#}
-					
 						<h1 class="btn btn-outline-light me-2 mt-2">Welcome,
 						{{app.user.name}}</h1>
 					</a>
