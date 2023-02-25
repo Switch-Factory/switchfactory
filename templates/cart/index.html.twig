@@ -8,13 +8,13 @@ block body %}
 		<div class="container py-5 h-100">
 			<div class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col-12">
-					<div class="card card-registration card-registration-2" style="border-radius: 15px">
+					<div class="card card-registration card-registration-2 shopcart-bg" >
 						<div class="card-body p-0">
 							<div class="row g-0">
 								<div class="col-lg-8">
 									<div class="p-5">
-										<div class="d-flex justify-content-between align-items-center mb-5">
-											<h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+										<div class="title-shopcart" class="d-flex justify-content-between align-items-center mb-5">
+											<h1 class="title-cart" class="fw-bold mb-0 text-black">Shopping Cart</h1>
 										</div>
 										<hr class="my-4"/>
 										{% if count == 0 %}
@@ -22,27 +22,27 @@ block body %}
 												Empty cart, go shopping~
 											{% else %}
 												{% for p in product %}
-													<div class="row mb-4 d-flex justify-content-between align-items-center">
+													<div class="row mb-4 d-flex  align-items-center">
 														<div class="col-md-2 col-lg-2 col-xl-2">
 															{% set img = p.image %}
-															<img src="{{asset('uploads/'~img)}}" class="img-fluid rounded-3" alt="Cotton T-shirt"/>
+															<img src="{{asset('uploads/'~img)}}" class="img-fluid rounded-3 shopcart-img" alt="Cotton T-shirt"/>
 														</div>
-														<div class="col-md-3 col-lg-3 col-xl-3">
-															<h6 class="text-black mb-0">{{p.name}}</h6>
+														<div  class="col-md-3 col-lg-3 col-xl-2 shopcart-bigname">
+															<h6 class="text-black mb-0 shopcart-name">{{p.name}}</h6>
 														</div>
-														<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-															<form class="d-flex flex-row" role="search" method="GET" action="{{path('cart_edit')}}">
+														<div class="col-md-3 col-lg-3 col-xl-3 d-flex">
+															<form class="d-flex flex-row shopcart-formvalue" role="search" method="GET" action="{{path('cart_edit')}}">
 																<input type="hidden" name="id" value="{{app.user.id}}">
 																<input type="hidden" name="proid" value="{{p.id}}">
-																<input id="form1" min="0" name="quantity" value={{p.quantity}} type="number" class="form-control form-control-sm w-100"/>
+																<input id="form1" min="0" name="quantity" value={{p.quantity}} type="number" class="form-control form-control-sm w-100 shopcart-value"/>
 
-																<button class="btn btn-success" type="submit">/</button>
+																<button class="btn btn-success btn-icon" type="submit"><i class="bi bi-arrow-up-circle-fill"></i></button>
 															</form>
 														</div>
 													</form>
 
-													<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-														<h6 class="mb-0">{{p.total}}. VND</h6>
+													<div class="col-md-3 col-lg-2 col-xl-3 offset-lg-1">
+														<h6 class="mb-0 shopcart-name">{{p.total}}. VND</h6>
 													</div>
 													<div class="col-md-1 col-lg-1 col-xl-1 text-end">
 														<a href="{{path("cart_delete",{"product":p.id}) }}" class="text-muted">
@@ -53,7 +53,7 @@ block body %}
 											{% endfor %}
 										{% endif %}
 										<hr class="my-4"/>
-										<div class="pt-5">
+										<div class="pt-5 data-container">
 											<h6 class="mb-0">
 												<a href="http://127.0.0.1:8000/index" class="text-body">
 													<i class="fas fa-long-arrow-alt-left me-2"></i>Back to
@@ -95,6 +95,190 @@ block body %}
 		</div>
 	</section>
 	<style>
+			.shopcart-bg{
+				border-radius:15px;
+				background-color: #f8edeb;
+			}
+			.title-shopcart{
+				justify-content:center;
+				font-weight:bold;
+				
+
+				
+			}
+			.title-cart{	
+				font-family:Georgia;
+				font-weight:bold;
+				color: #dedbd2;
+				text-shadow:5px 5px 5px #000;
+				font-size:60px;
+				border-color: #B22222;
+			}
+			.title-cart:hover{
+				font-family:Georgia;
+				font-weight:bold;
+				color: #4cc9f0;
+				text-shadow:5px 5px 5px #ffc6ff;
+				font-size:60px;
+				border-color: #B22222;
+			}
+			/* .shopcart-bigname{
+				font-family:'Palatino Linotype', 'Book Antiqua' ,'Palatino';
+
+			} */
+			.shopcart-name{
+				font-family:'Palatino Linotype', 'Book Antiqua' ,'Palatino';
+				font-size:15px;
+				font-weight:bold;
+			}
+			.shopcart-value{
+				text-align:center;
+				font-family:'Palatino Linotype', 'Book Antiqua' ,'Palatino';
+				box-shadow:5px 5px 5px #000;
+				border-color: #B22222;
+
+				font-size:20px;
+			}
+
+			
+			.shopcart-formvalue{
+
+			}
+			.shopcart-img{
+				box-shadow:5px 5px 5px #6c757d;
+			}
+			.btn-icon{
+				margin:2px 2px 2px 15px;
+				background-color:#fcd5ce;
+				border-color:#000;
+				/* border-radius:30px; */
+				box-shadow:3px 3px 3px #000;
+			}
+			.btn-icon:hover{
+				margin:2px 2px 2px 15px;
+				background-color:#000;
+				border-color:#fff;
+
+
+			}
+
+			
+			.bi{
+				font-size: 20px;
+				color:#f4978e;
+					/* border-radius:50px */
+			}
+			.bi:hover{
+				font-size: 20px;
+				color:#fff;
+			}
+			
+
+
+	
+				/* CSS */
+				.text-body {
+				--b: 3px;   /* border thickness */
+				--s: .45em; /* size of the corner */
+				--color: #373B44;
+				
+				padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+				color: var(--color);
+				--_p: var(--s);
+				background:
+					conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+					var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+				transition: .3s linear, color 0s, background-color 0s;
+				outline: var(--b) solid #0000;
+				outline-offset: .6em;
+				font-size: 16px;
+
+				border: 0;
+
+				user-select: none;
+				-webkit-user-select: none;
+				touch-action: manipulation;
+
+				text-decoration: none;
+				font-family:'Palatino Linotype', 'Book Antiqua' ,'Palatino';
+				font-size:20px;
+				font-weight:bold;
+				
+				}
+
+				.text-body:hover,
+				.text-body:focus-visible{
+				--_p: 0px;
+				outline-color: var(--color);
+				outline-offset: .05em;
+				}
+
+				.text-body:active {
+				background: var(--color);
+				color: #fff;
+				}
+
+
+			/* .text-body{
+cursor:pointer;
+  position:relative;
+  padding:10px 20px;
+  background:white;
+  font-size:28px;
+  border-top-right-radius:10px;
+  border-bottom-left-radius:10px;
+  transition:all 1s;
+  &:after,&:before{
+    content:" ";
+    width:10px;
+    height:10px;
+    position:absolute;
+    border :0px solid #fff;
+    transition:all 1s;
+    }
+  &:after{
+    top:-1px;
+    left:-1px;
+    border-top:5px solid black;
+    border-left:5px solid black;
+  }
+  &:before{
+    bottom:-1px;
+    right:-1px;
+    border-bottom:5px solid black;
+    border-right:5px solid black;
+  }
+  &:hover{
+    border-top-right-radius:0px;
+  border-bottom-left-radius:0px;
+    // background:rgba(0,0,0,.5);
+    // color:white;
+    &:before,&:after{
+      
+      width:100%;
+      height:100%;
+      // border-color:white;
+    }
+  }
+}
+
+.data-container{
+  background:#ffebee;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+} */
+
+
+	
+
+
+			
+
+
+
+
 		@media(min-width: 1025px) {
 			.h-custom {
 				height: 100vh !important;
