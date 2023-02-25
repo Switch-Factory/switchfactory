@@ -19,20 +19,18 @@ class EditUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('name', TextType::class)
-            ->add('birthday',DateType::class,[
-                'widget' => 'single_text'
-            ])
-            ->add('save', SubmitType::class, [
-                'label'=>'Signup'
-            ]);
+        ->add('name', TextType::class)
+        ->add('email', EmailType::class)
+        ->add('phone', TextType::class )
+        ->add('address', TextType::class)
+        ->add('birthday',DateType::class,['widget' => 'single_text'])
+        ->add('save', SubmitType::class, ['label'=>'Signup']);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => User::class,
-        ]);
-    }
+    // public function configureOptions(OptionsResolver $resolver):void
+    // {
+    //     $resolver->setDefaults([
+    //         'data_class' => User::class,
+    //     ]);
+    // }
 }
