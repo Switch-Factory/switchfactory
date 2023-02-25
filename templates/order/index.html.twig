@@ -4,16 +4,25 @@
 
 {% block body %}
 
-						<div class="row g-0">
+			<div class="page-heading pb-2 mt-4 mb-2 OderHEader ">
+		<h3 class="Order-HEaeder" >Wellcome to Management</h3>
+		<a href="{{path('index')}}" calss="profileA" style="justify-conntent:center;justify-content: center;display: flex; text-decoration:none;" >
+			<button type="button" class="fas fa-long-arrow-alt-left me-2 orderButton">Back to index</button>
+		</a>
+		</div>
+<div class="  justify-content-center align-items-center container-xl px-4 mt-4" style="background-color:#d5bdaf; display:flex" >
+
+	</div>
+						<div class="row g-0"style="justify-content: center;">
 							<div class="col-lg-8">
-								<div class="p-5">
-									<div class="page-content">
+								<div class="">
+									<div class="page-content Orderbg">
 										<div class="btn-group" role="group" aria-label="Basic outlined example"></div>
-										<div class="card">
+										<div class="card OrderAround"style="box-shadow: 5px 5px 5px #d00000;">
 											<div class="container mb-3">
 												<div class="table-responsive text-nowrap">
 													<table class="table table-striped">
-														<thead>
+														<thead class="orderHead">
 															<tr>
 																<th>ID</th>
 																<th>Product Name</th>
@@ -41,4 +50,83 @@
 									</div>
 								</div>
 							</div>
+</div>
+
+<style>
+
+
+
+		
+				.Order-HEaeder {
+					color: #fc2f00;
+					font-family: 'Rouge Script', cursive;
+					font-size: 80px;
+					font-weight: bold;
+					line-height: 48px;
+					margin: 50px 0 50px;
+					text-align: center;
+					text-shadow: 5px 5px 2px #fff;
+				}
+
+				.Order-HEaeder:hover{
+					color: #00FFFF;
+					font-family: 'Rouge Script', cursive;
+					font-size: 60px;
+					font-weight: normal;
+					line-height: 48px;
+						margin: 50px 0 50px;
+					text-align: center;
+					text-shadow: 5px 1px 2px #082b34;
+				}
+
+
+				/* CSS */
+					.orderButton {
+					--b: 3px;   
+					--s: .45em; 
+					--color: #073b4c;
+					
+					padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+					color: var(--color);
+					--_p: var(--s);
+					background:
+						conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+						var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+					transition: .3s linear, color 0s, background-color 0s;
+					outline: var(--b) solid #0000;
+					outline-offset: .6em;
+					font-size: 16px;
+
+					border: 0;
+
+					user-select: none;
+					-webkit-user-select: none;
+					touch-action: manipulation;
+					}
+
+					.orderButton:hover,
+					.orderButton:focus-visible{
+					--_p: 0px;
+					outline-color: var(--color);
+					outline-offset: .05em;
+					}
+
+					.orderButton:active {
+					background: var(--color);
+					color: #fff;
+					}
+					.OrderAround{
+					text-shadow: 5px 5px 5px 5px;
+
+					}
+					.Orderbg{
+					text-shadow: 5px 5px 5px 5px;
+
+					}
+					.orderHead{
+						font-family:'Palatino Linotype','Book Antiqua','Palatino';
+						font-size:25px;
+					}
+		
+</style>
          {% endblock %}
